@@ -1,0 +1,71 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" /> 
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" /> 
+	   <link rel="stylesheet" type="text/css" href="css/jquery-mobile-theme/themes/jquery.mobile.icons.min.css" />
+	   <link rel="stylesheet" type="text/css" href="css/jquery-mobile-theme/themes/pigeontheme.min.css" />
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" /> 
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script> 
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> 
+	
+    <title>Pigeon</title>
+    </head>
+    <body> 
+		<div data-role="page">
+			<div data-role="header" data-theme="a">
+				<h4 align="center">Pigeon SignUp</h4>
+			</div>
+			<div data-role="main" class="ui-content">
+				<form name="signupform">
+					<div class="ui-grid-solo ui-responsive">
+						<div class="ui-grid-a ui-responsive" style="padding-bottom:20px">
+							<div class="ui-block-a">
+								<label for="name">Your Name<font color="#FF7F00">*</font></label>
+							</div>
+							<div class="ui-block-b">
+								<input type="text" id="name" data-mini="true" placeholder="YourName" required/>
+							</div>
+							<div class="ui-block-a">
+								<label for="mob-num">Your Mobile.No<font color="#FF7F00">*</font></label>
+							</div>
+							<div class="ui-block-b">
+								<input type="tel"  id="mob-num" maxlength="10" data-mini="true" placeholder="MobileNum" required/>
+							</div>
+							<div class="ui-block-a">
+								<label for="email">Your E-Mail ID</label>
+							</div>
+							<div class="ui-block-b">
+								<input type="email" id="email" data-mini="true" placeholder="E-MailID"/>
+							</div>
+							<div class="ui-block-a">
+								<label for="pword">Password</label>
+							</div>
+							<div class="ui-block-b">
+								<input type="password" id="pword" data-mini="true"/>
+							</div>
+							<div class="ui-block-a">
+								<label for="re-pword">Retype-Password</label>
+							</div>
+							<div class="ui-block-b">
+								<input type="password" id="re-pword" data-mini="true"/>
+							</div>
+						</div>
+						<input type="submit" value="SignUp">
+					</div>
+				</form>
+			</div>
+			<div data-role="footer" style="height: 40px" data-position="fixed">
+				
+			</div>
+		</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
