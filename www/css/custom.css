@@ -19,10 +19,11 @@
     font-style: normal;
 }*/
 
-body { 
+/*body { 
     margin: 0;
-    /*font-family: 'Source Sans Pro', sans-serif;*/
-}
+	width: 100% !imporant;
+	height: 100% !important; 
+}*/
 
 div {
     padding: 0;
@@ -33,7 +34,7 @@ div {
     width: 100%;
 }
 
-#keypad {
+.keypad {
     position: absolute;
     bottom: 0;
     width: 98%;
