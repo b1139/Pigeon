@@ -1,24 +1,6 @@
 function getBaseURL() {
-    var url = location.href;  // entire url including querystring - also: window.location.href;
-    var baseURL = url.substring(0, url.indexOf('/', 14));
-
-    if (baseURL.indexOf('http://localhost:8090') != -1) {
-        // Base Url for localhost
-        var url = location.href;  // window.location.href;
-        var pathname = location.pathname;  // window.location.pathname;
-        var index1 = url.indexOf(pathname);
-        var index2 = url.indexOf("/", index1 + 1);
-        var baseLocalUrl = url.substr(0, index2);
-
-        return baseLocalUrl + "/";
-    }    
-    else {
-        // Root Url for domain name
-        //return baseURL + "/spillmobile/";
-		//return "http://creatustent.com/spillmobile/";
-		return "http://mobile.spillnow.com/";
-		//return "file:///android_asset/spillmobile/";
-    }
+    var url = location.href;  // entire url including querystring - also: window.location.href; 
+	alert(url);
 }
  
 
@@ -80,7 +62,7 @@ function doSignUp()
 		return false;
 	}
 	else 
-	{alert($("#signupform").serialize());
+	{ 
 		startPageLoad();
 		$.ajax({
 			type:'POST',
@@ -183,8 +165,7 @@ function doLogin(){
 				data: $("#login").serialize(),
 				//dataType: 'json',
 				success:function(responseText){
-						endPageLoad();
-						alert(responseText);
+						endPageLoad(); 
 						if(responseText == 0)
 						{ 
 							showMessage("Invalid User Credentials");

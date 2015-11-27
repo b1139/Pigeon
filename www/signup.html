@@ -31,7 +31,7 @@
 						<div class="col-sm-12">  
 							<h3 class="text-center">
 								<img src="img/white-pigeon.png" width="50px" height="60px"/> 
-								<b>Pigeon</b>
+								<b>Pigeon SignUp</b>
 							</h3>
 						</div> 
 					</div>
@@ -45,16 +45,50 @@
 				</div>	
 			</div>
 			<div class="row" style="padding-left:25px;padding-right:25px;padding-top:10px;padding-bottom:10px">
-				<div class="col-sm-6">
-					<a href="login.html" class="ui-btn">SignIn</a> 
-				</div>	 
-				<div class="col-sm-6">
-					<a href="signup.html" class="ui-btn">SignUp</a> 		 
-				</div> 
+				<div class="col-sm-12">
+					<form name="signupform" id="signupform" method="post"> 
+							<div class="ui-grid-solo ui-responsive" style="padding-bottom:20px">
+								<div class="ui-block-a">
+									<label for="name">Your Name<font color="#FF7F00">*</font></label>
+								</div>
+								<div class="ui-block-a">
+									<input type="text" id="name" name="name" placeholder="YourName"/>
+								</div>
+								<div class="ui-block-a">
+									<label for="mob-num">Your Mobile.No<font color="#FF7F00">*</font></label>
+								</div>
+								<div class="ui-block-a">
+									<input type="tel" name="mob-num"  id="mob-num" maxlength="10"  placeholder="MobileNum"/>
+								</div>
+								<div class="ui-block-a">
+									<label for="email">Your E-Mail ID</label>
+								</div>
+								<div class="ui-block-a">
+									<input type="text" id="email" name="email" placeholder="E-MailID"/>
+								</div>
+								<div class="ui-block-a">
+									<label for="pword">Password<font color="#FF7F00">*</font></label>
+								</div>
+								<div class="ui-block-a">
+									<input type="password" id="pword" name="pword" placeholder="Password"/>
+								</div>
+								<div class="ui-block-a">
+									<label for="re-pword">Retype-Password<font color="#FF7F00">*</font></label>
+								</div>
+								<div class="ui-block-a">
+									<input type="password" id="re-pword" name="re-pword" placeholder="Re-Type Password"/>
+								</div>
+							</div>  
+					</form>
+					<div class="row">
+								<div class="col-sm-12">
+									<input type="button" value="SignUp" class="ui-btn btn-block" onclick="doSignUp()"/> 
+									</div>
+							</div>
+				</div>
 			</div> 
 		</div>
         <script type="text/javascript" src="cordova.js"></script> 
 		<script src="js/web-service.js"></script> 
-		<script>getBaseURL()</script>
     </body>
 </html>
