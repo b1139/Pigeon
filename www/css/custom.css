@@ -21,3 +21,14 @@ body {
 	width: 100% !imporant;
 	height: 100% !important; 
 }
+.error
+{ 
+    color: #FF0000;
+    cursor: default;
+    display: none;
+    font-weight: bold;
+	font-size:16px;
+    padding: 4px 0; 
+    text-align: center; 
+	width:100%;
+}
