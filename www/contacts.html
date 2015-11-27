@@ -54,10 +54,12 @@
             // onSuccess: Get a snapshot of the current contacts
 
             function onSuccess(contacts) {
+				alert(contacts.length);
                 for (var i = 0; i < contacts.length; i++) {
                      for (var i = 0; i < contacts.length; i++) {
-                    $("#contactList").append("<li>             <h1>"+contacts[i].phoneNumber[0].value+"</h1></li>");
-                    $("#contactList").listview("refresh");
+					 	
+                    $("#contactList").innerHTML("<li>             <h1>"+contacts[i].phoneNumber[0].value+"</h1></li>");
+                   /* $("#contactList").listview("refresh");*/
                	 }
                 }
             }
