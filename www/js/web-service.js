@@ -1,6 +1,10 @@
 function getBaseURL() {
     var url = location.href;  // entire url including querystring - also: window.location.href; 
-	alert(url);
+	if(url.indexOf("http://localhost") != -1){
+		return "http://localhost:8090/pigeon/rest/api.php";
+	}else{
+		return "http://creatustent.com/pigeon/rest/api.php";
+	}
 }
  
 
@@ -67,7 +71,7 @@ function doSignUp()
 		$.ajax({
 			type:'POST',
 			//url:"/spillmobile/process/api.php?rquest=login",
-			url:"http://localhost:8090/pigeon/rest/api.php?rquest=signuppigeon",
+			url:getBaseURL()+"?rquest=signuppigeon",
 			data: $("#signupform").serialize(),
 			//dataType: 'json',
 			success:function(responseText){ 
@@ -161,7 +165,7 @@ function doLogin(){
 			startPageLoad();
 			$.ajax({
 				type:'POST', 
-				url:"http://localhost:8090/pigeon/rest/api.php?rquest=login",
+				url:getBaseURL()+"?rquest=login",
 				data: $("#login").serialize(),
 				//dataType: 'json',
 				success:function(responseText){
