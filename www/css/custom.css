@@ -32,3 +32,6 @@ body {
     text-align: center; 
 	width:100%;
 }
+.ui-btn-icon-left::after, .ui-btn-icon-right::after, .ui-btn-icon-top::after, .ui-btn-icon-bottom::after, .ui-btn-icon-notext::after{
+	background-color: #FF7F00 !important;
+}

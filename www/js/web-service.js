@@ -175,11 +175,43 @@ function doLogin(){
 							showMessage("Invalid User Credentials");
 						}
 						else
-						{
+						{ 
+							localStorage.setItem('userId',responseText.mobile_no);
 							window.location.href= 'home.html';
 						} 		
 				},			
 			});
 			return false;
 		}
+}
+
+function loadAllPigeons(){
+	content = null; 
+	startPageLoad();
+			$.ajax({
+				type:'POST', 
+				url:getBaseURL()+"?rquest=loadPigeons",  
+				data:{'userId':localStorage.getItem('userId')},
+				success:function(responseText){ 
+						if(responseText == 0)
+						{ 
+							showMessage("No Pigeons are Available !!!");
+						}
+						else
+						{ 
+							$("#pigeons").html(responseText);
+							$("#pigeons").trigger('create'); 
+						} 		
+						endPageLoad(); 
+				},			
+			});
+}
+
+function isUser(){
+	userId = localStorage.getItem('userId'); 
+	if(userId.length > 0){
+		return 1;
+	}else{
+		window.location.href = "login.html";
+	}
 }
