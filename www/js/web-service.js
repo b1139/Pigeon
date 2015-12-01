@@ -76,31 +76,15 @@ function doSignUp()
 			//dataType: 'json',
 			success:function(responseText){ 
 					endPageLoad();
-					window.location.href= 'home.html';
-					/*if(responseText > 0)
+					
+					if(responseText == 0)
 					{
-						if(actionPending == "response")
-						{
-							$("#loginPopup").popup("close");
-							showSuccessMessage("Response submitted. Thanks!");
-							submitResponse();
-							loadSpill();
-							actionPending = null;
-						}
-						else if(actionPending == "hug")
-						{
-							loadSpill();
-							actionPending = null;
-						}
-						else
-						{
-							window.location.href= getBaseURL()+'home.html';
-						}
+						 showMessage("Sign up failed. Please check your details..");
 					}
 					else
 					{
-						showMessage("Sign up failed. Please check your details..");
-					}*/
+						window.location.href= 'home.html'; 
+					}
 					/*$.each(responseText, function(key, value){
 						$("#result").html('Logged User: ' + value);   					
 					});*/		
@@ -214,4 +198,75 @@ function isUser(){
 	}else{
 		window.location.href = "login.html";
 	}
+}
+
+function signOut(){
+	localStorage.clear();
+	window.location.href = 'login.html';
+}
+
+function loadHistory(toUserId){
+	startPageLoad();
+	userId = localStorage.getItem('userId');  
+	$.ajax({
+		type:'POST',
+		url	:getBaseURL()+"?rquest=loadHistory",
+		data:{
+				'fromUser':localStorage.getItem('userId'),
+				'toUser':toUserId
+			},
+		success:function(response){ 
+				 $("#chat").html(response);
+			}
+	});
+	endPageLoad();
+}
+
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+function sendContactRequest(from,to){
+	var fromUser = ""+from;
+	var toUser = ""+to;
+	startPageLoad(); 
+	if((fromUser.length > 0) && (toUser.length > 0)){ 
+		$.ajax({
+			type:'POST',
+			url	:getBaseURL()+"?rquest=sendContactRequest",
+			data:{
+					'fromUser':fromUser,
+					'toUser':toUser
+				},
+			success:function(response){ 
+					 $("#chat").html(response);
+				}
+		});
+	}
+		endPageLoad();
+}
+
+function acceptContactRequest(from,to){
+	var fromUser = ""+from;
+	var toUser = ""+to;
+	startPageLoad(); 
+	if((fromUser.length > 0) && (toUser.length > 0)){ 
+		$.ajax({
+			type:'POST',
+			url	:getBaseURL()+"?rquest=acceptContactRequest",
+			data:{
+					'fromUser':fromUser,
+					'toUser':toUser
+				},
+			success:function(response){ 
+					if(response == 1){
+					 	loadHistory(fromUser);
+					}
+				}
+		});
+	}
+		endPageLoad();
 }
