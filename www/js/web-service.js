@@ -75,14 +75,14 @@ function doSignUp()
 			data: $("#signupform").serialize(),
 			//dataType: 'json',
 			success:function(responseText){ 
-					endPageLoad();
-					
+					endPageLoad(); 
 					if(responseText == 0)
 					{
 						 showMessage("Sign up failed. Please check your details..");
 					}
 					else
 					{
+						localStorage.setItem('userId',responseText['username']);
 						window.location.href= 'home.html'; 
 					}
 					/*$.each(responseText, function(key, value){
@@ -205,7 +205,7 @@ function signOut(){
 	window.location.href = 'login.html';
 }
 
-function loadHistory(toUserId){
+function loadHistory(toUserId){ 
 	startPageLoad();
 	userId = localStorage.getItem('userId');  
 	$.ajax({
@@ -265,6 +265,32 @@ function acceptContactRequest(from,to){
 					if(response == 1){
 					 	loadHistory(fromUser);
 					}
+				}
+		});
+	}
+		endPageLoad();
+}
+
+function sendTextMessage(from,to){
+	var fromUser = ""+from;
+	var toUser = ""+to;
+	var message = $("#message-to-send").val();
+	alert(fromUser+"::"+toUser+"::"+message);
+	startPageLoad(); 
+	if((fromUser.length > 0) && (toUser.length > 0)){ 
+		$.ajax({
+			type:'POST',
+			url	:getBaseURL()+"?rquest=sendTextMessage",
+			data:{
+					'fromUser':fromUser,
+					'toUser':toUser,
+					'message':message
+				},
+			success:function(response){ 
+					if(response != 0){
+						$("#chat").html(response);
+					}
+					 
 				}
 		});
 	}

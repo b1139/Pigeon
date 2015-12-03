@@ -31,10 +31,9 @@
 	<style>
 		.user
 		{
-		    width: 10%; 
-		    height: 10%;
-		    border-radius: 100%;
-			border:1px solid #fff;
+		    width: 50%; // These are your circle dimensions
+		    height: 50%;
+		    border-radius: 50%;
 		    background-repeat: no-repeat; 
 		    background-position: center center; // Center image in the circle
 		    background-size: cover; // Make sure it covers the circle, as there is no bg repeat
@@ -47,20 +46,24 @@
 		<div class="container"> 
 				<div data-role="header">
 					<div class="row"> 
-						<div class="col-sm-4">   
-								<a href="#"> 
+						<div class="col-sm-12 text-center">   
+								<!--<a href="#"> 
 									<img src="img/sample.jpg" class="user"/>
-								</a>
-						</div>
-						<div class="col-sm-8"> 
+								</a>   -->
+							<div class="chat-header clearfix">
+						        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/chat_avatar_01_green.jpg" alt="avatar">
+						        
 						        <div class="chat-about">
-						          <div class="chat-with">Chat with Vincent Porter</div> 
-						        </div> 
-						  </div> 
+						          <div class="chat-with">Chat with Vincent Porter</div>
+						          <div class="chat-num-messages">already 1 902 messages</div>
+						        </div>
+						        <i class="fa fa-star"></i>
+						      </div>
+						</div> 
 					</div>
 				</div> 
 			 
-			<div class="row">
+			<div class="row" style="padding-left:25px;padding-right:25px;padding-top:25px;padding-bottom:25px;">
 				 <div class="col-sm-12" style="background-color:#fff"> 
 					 <script> 
 					 	loadHistory(getParameterByName('id'));
