@@ -289,6 +289,7 @@ function sendTextMessage(from,to){
 			success:function(response){ 
 					if(response != 0){
 						$("#chat").html(response);
+						$('#chat').scrollTop($('#chat')[0].scrollHeight);
 					}
 					 
 				}
@@ -296,3 +297,11 @@ function sendTextMessage(from,to){
 	}
 		endPageLoad();
 }
+ function handle(e){
+        if(e.keyCode === 13){
+            alert("Enter was pressed was presses");
+			return true;
+        }
+
+        return false;
+    }
