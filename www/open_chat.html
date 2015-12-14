@@ -7,7 +7,7 @@
          <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
 		
 	<!-- Theme Roller Files -->
-	 <link rel="stylesheet" type="text/css" href="css/jquery-mobile-theme/themes/jquery.mobile.icons.min.css" />
+	 <!--<link rel="stylesheet" type="text/css" href="css/jquery-mobile-theme/themes/jquery.mobile.icons.min.css" />-->
 	 <link rel="stylesheet" type="text/css" href="css/jquery-mobile-theme/themes/pigeontheme.min.css" />
 	
 	<!-- JQuery Mobile File -->
@@ -27,6 +27,35 @@
     <title>Pigeon</title>
 	<script>
 		status = isUser(); 
+		loadHistory(getParameterByName('id'));
+		displayMessageBox(getParameterByName('id')); 
+		$(document).ready(function(){
+												setInterval("loadHistory(getParameterByName('id'))",3000);
+												setTimeout(displayMessageBox(getParameterByName('id')));
+							var inputFields = [
+						   {
+						    labelId: '#text',
+						     inputId: '#message-to-send'
+						   }
+						 ];
+						   
+						 for(var i = 0; i < inputFields.length; i++) {
+						  /* console.log('inputFields[i].inputId = '+inputFields[i].inputId);*/
+						   var element = document.querySelector(inputFields[i].inputId);
+						   element.addEventListener('focus', getEventListener(inputFields[i].labelId), true);
+						   element.addEventListener('blur', function() {
+						         console.log('blurEvent');
+						     window.location.hash = "";
+						   }, true);
+						 }
+
+						 function getEventListener(urlHash) {
+						   return function(e) {
+						   /*  console.log('focusEvent = '+urlHash);*/
+						     window.location.hash = urlHash;
+						   };
+						 }									
+		});
 	</script>
 	<style>
 		.user
@@ -43,31 +72,42 @@
 	</style>
     </head>
     <body> 
-	<div id="pagedimmer"></div>
-		<div class="container"> 
-				<div data-role="header" style="padding-left: 5px;padding-right: 5px;padding-top: 3px;padding-bottom: 3px">
-					<div class="row"> 
-						<div class="col-sm-12">  
-									<a href="#"> 
-										<img src="img/sample.jpg" class="pic-circle-corner"/>
-									</a>
-									<div class="chat-about">
-							          <div class="chat-with">Name</div> 
-							        </div>  
-						</div> 
-					</div>
-				</div> 
-			 
-			<div class="row">
-				 <div class="col-sm-12" style="background-color:#fff"> 
-					 <script> 
-					 	loadHistory(getParameterByName('id'));
-					 </script> 
-						   <div id="chat"></div>
-				    </div>
+		<div data-role="header" style="padding-bottom: 2px"> 
+			<img src="img/back.png"   class="backbutton"/> 
+			<table style="float: right; border-collapse: collapse;
+    border-spacing: 0;" class="ui-responsive">
+				<tr>
+					<td>
+						<label id="nameUser"></label> 
+					</td>
+				</tr>			
+				<tr>
+					<td>
+						<lable id="status" ></lable>
+					</td>
+				</tr>	
+				
+			</table>
+			<img src="img/sample.jpg" class="pic-circle-corner" style="float: right"/>
+			<script>
+				displayName(getParameterByName('name'));
+				activeOrNot(getParameterByName('id'));
+			</script>
+		</div>
+		<div data-role="main" class="ui-content" style="width:100%">
+			<div id="pagedimmer"></div>
+			<div class="container">
+				<div class="row">
+					 <div class="col-sm-12" style="background-color:#fff">  
+						 <div id="chat1"></div> 
+					    </div>
 				</div> 
 			</div>
-        <script type="text/javascript" src="cordova.js"></script> 
-		
+		</div>
+		<div data-role="footer" data-position="fixed" style="background-color: #fff;border-color: #fff">
+			<div id="chat-message-box" style="display:none">
+			 </div>
+		</div> 
+        <script type="text/javascript" src="cordova.js"></script>   
     </body>
 </html>

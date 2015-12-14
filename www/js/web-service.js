@@ -205,8 +205,8 @@ function signOut(){
 	window.location.href = 'login.html';
 }
 
-function loadHistory(toUserId){ 
-	startPageLoad();
+function loadHistory(toUserId){   
+	startPageLoad(); 
 	userId = localStorage.getItem('userId');  
 	$.ajax({
 		type:'POST',
@@ -215,8 +215,16 @@ function loadHistory(toUserId){
 				'fromUser':localStorage.getItem('userId'),
 				'toUser':toUserId
 			},
-		success:function(response){ 
-				 $("#chat").html(response);
+		success:function(response){  
+				 	$("#chat1").html(response);
+					if ($('#atc').length > 0) {
+					      $("#chat-message-box").css("display","none");
+					}else{ 
+						 $("#chat-message-box").css("display","block"); 
+						$("div.chat-history").scrollTop(999999); 
+					}
+				
+				 /*$("#foc").focus(); */ 
 			}
 	});
 	endPageLoad();
@@ -242,7 +250,8 @@ function sendContactRequest(from,to){
 					'toUser':toUser
 				},
 			success:function(response){ 
-					 $("#chat").html(response);
+					 $("#chat1").html(response);  
+					  $("#chat-message-box").css("display","block");
 				}
 		});
 	}
@@ -274,8 +283,7 @@ function acceptContactRequest(from,to){
 function sendTextMessage(from,to){
 	var fromUser = ""+from;
 	var toUser = ""+to;
-	var message = $("#message-to-send").val();
-	alert(fromUser+"::"+toUser+"::"+message);
+	var message = $("#message-to-send").val(); 
 	startPageLoad(); 
 	if((fromUser.length > 0) && (toUser.length > 0)){ 
 		$.ajax({
@@ -288,8 +296,10 @@ function sendTextMessage(from,to){
 				},
 			success:function(response){ 
 					if(response != 0){
-						$("#chat").html(response);
-						$('#chat').scrollTop($('#chat')[0].scrollHeight);
+						$("#chat1").html(response);  
+						$("div.chat-history").scrollTop(999999); 
+						 $("#message-to-send").val("");
+						  $("#message-to-send").focus();
 					}
 					 
 				}
@@ -298,10 +308,56 @@ function sendTextMessage(from,to){
 		endPageLoad();
 }
  function handle(e){
-        if(e.keyCode === 13){
-            alert("Enter was pressed was presses");
+        if(e.keyCode === 13){ 
 			return true;
-        }
-
+        } 
         return false;
-    }
+    } 
+
+function displayName(name){   
+	$("#nameUser").text(name); 
+}
+
+function displayMessageBox(toUserId){
+	var fromUserId = localStorage.getItem('userId');
+	var box = "<div class='chat-message clearfix'><table><tr><td style='width:90%'><textarea name='message-to-send' id='message-to-send' placeholder ='Type your message' rows='3' onkeypress='if(handle(event)){sendTextMessage("+fromUserId+","+toUserId+");}'></textarea>  <!-- <i class='fa fa-file-o'></i> &nbsp;&nbsp;&nbsp;<i class='fa fa-file-image-o'></i> --><td style='width:10%'><img src='img/logo.png' style='cursor:pointer;' width='40px' height='40px' onclick='sendTextMessage("+fromUserId+","+toUserId+")'/></td></tr></table></div> ";
+	$("#chat-message-box").html(box);  
+}
+
+function activeUser(){
+	userId = localStorage.getItem('userId');
+	$.ajax({
+		type:"post",
+		url:getBaseURL()+"?rquest=activateUser",
+		data:{'userId':userId},
+		success:function(response){ 
+			} 
+	});
+}
+
+function activeOrNot(chatId){ 
+	$.ajax({
+		type:"post",
+		url:getBaseURL()+"?rquest=activeOrNot",
+		data:{'userId':chatId},
+		success:function(response){ 
+				if(response == 1){
+					$("#status").text("online");
+				}else{
+					$("#status").text("offline");
+				}
+			} 
+	});
+}
+
+function loadCurrentChat(){
+	userId = localStorage.getItem('userId');  
+	$.ajax({
+		type:"post",
+		url:getBaseURL()+"?rquest=loadCurrentChat",
+		data:{'userId':userId},
+		success:function(response){ 
+				$("#currentChat").html(response);
+			} 
+	});
+}

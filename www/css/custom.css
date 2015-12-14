@@ -35,3 +35,9 @@ body {
 .ui-btn-icon-left::after, .ui-btn-icon-right::after, .ui-btn-icon-top::after, .ui-btn-icon-bottom::after, .ui-btn-icon-notext::after{
 	background-color: #FF7F00 !important;
 }
+
+.backbutton{
+	width:40px;
+	height:40px;
+	cursor:pointer;
+}
