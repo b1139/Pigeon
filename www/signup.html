@@ -21,6 +21,51 @@
 	 
 	 <link rel="stylesheet" type="text/css" href="css/custom.css" />
     <title>Pigeon</title>
+	<script>
+		var inputFields = [
+						   {
+						    labelId: '#lname',
+						     inputId: '#name'
+						   },
+						   {
+						    labelId: '#lmobnum',
+						     inputId: '#mob-num'
+						   },
+						   {
+						    labelId: '#lemail',
+						     inputId: '#email'
+						   },
+						   {
+						    labelId: '#lpword',
+						     inputId: '#pword'
+						   },
+						   {
+						    labelId: '#lrepword',
+						     inputId: '#repword'
+						   ,
+						   {
+						    labelId: '#lrepword',
+						     inputId: '#re-pword'
+						   }
+						 ];
+						   
+						 for(var i = 0; i < inputFields.length; i++) {
+						  /* console.log('inputFields[i].inputId = '+inputFields[i].inputId);*/
+						   var element = document.querySelector(inputFields[i].inputId);
+						   element.addEventListener('focus', getEventListener(inputFields[i].labelId), true);
+						   element.addEventListener('blur', function() {
+						         console.log('blurEvent');
+						     window.location.hash = "";
+						   }, true);
+						 }
+
+						 function getEventListener(urlHash) {
+						   return function(e) {
+						   /*  console.log('focusEvent = '+urlHash);*/
+						     window.location.hash = urlHash;
+						   };
+						 }			
+	</script>
     </head>
     <body> 
 	<div id="pagedimmer"></div>
@@ -49,31 +94,31 @@
 					<form name="signupform" id="signupform" method="post"> 
 							<div class="ui-grid-solo ui-responsive" style="padding-bottom:20px">
 								<div class="ui-block-a">
-									<label for="name">Your Name<font color="#FF7F00">*</font></label>
+									<label for="name" id="lname">Your Name<font color="#FF7F00">*</font></label>
 								</div>
 								<div class="ui-block-a">
 									<input type="text" id="name" name="name" placeholder="YourName"/>
 								</div>
 								<div class="ui-block-a">
-									<label for="mob-num">Your Mobile.No<font color="#FF7F00">*</font></label>
+									<label for="mob-num" id="lmobnum">Your Mobile.No<font color="#FF7F00">*</font></label>
 								</div>
 								<div class="ui-block-a">
 									<input type="tel" name="mob-num"  id="mob-num" maxlength="10"  placeholder="MobileNum"/>
 								</div>
 								<div class="ui-block-a">
-									<label for="email">Your E-Mail ID</label>
+									<label for="email" id="lemail">Your E-Mail ID</label>
 								</div>
 								<div class="ui-block-a">
 									<input type="text" id="email" name="email" placeholder="E-MailID"/>
 								</div>
 								<div class="ui-block-a">
-									<label for="pword">Password<font color="#FF7F00">*</font></label>
+									<label for="pword" id="lpword">Password<font color="#FF7F00">*</font></label>
 								</div>
 								<div class="ui-block-a">
 									<input type="password" id="pword" name="pword" placeholder="Password"/>
 								</div>
 								<div class="ui-block-a">
-									<label for="re-pword">Retype-Password<font color="#FF7F00">*</font></label>
+									<label for="re-pword" id="lrepword">Retype-Password<font color="#FF7F00">*</font></label>
 								</div>
 								<div class="ui-block-a">
 									<input type="password" id="re-pword" name="re-pword" placeholder="Re-Type Password"/>
