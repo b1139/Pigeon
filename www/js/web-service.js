@@ -320,7 +320,7 @@ function displayName(name){
 
 function displayMessageBox(toUserId){
 	var fromUserId = localStorage.getItem('userId');
-	var box = "<div class='chat-message clearfix'><table><tr><td style='width:90%'><textarea name='message-to-send' id='message-to-send' placeholder ='Type your message' rows='3' onkeypress='if(handle(event)){sendTextMessage("+fromUserId+","+toUserId+");}'></textarea>  <!-- <i class='fa fa-file-o'></i> &nbsp;&nbsp;&nbsp;<i class='fa fa-file-image-o'></i> --><td style='width:10%'><img src='img/logo.png' style='cursor:pointer;' width='40px' height='40px' onclick='sendTextMessage("+fromUserId+","+toUserId+")'/></td></tr></table></div> ";
+	var box = "<div class='chat-message clearfix'><table class='col-sm-12'><tr><td style='width:90%'><textarea name='message-to-send' id='message-to-send' placeholder ='Type your message' rows='3' onkeypress='if(handle(event)){sendTextMessage("+fromUserId+","+toUserId+");}'></textarea>  <!-- <i class='fa fa-file-o'></i> &nbsp;&nbsp;&nbsp;<i class='fa fa-file-image-o'></i> --><td style='width:10%'><img src='img/logo.png' style='cursor:pointer;' width='40px' height='40px' onclick='sendTextMessage("+fromUserId+","+toUserId+")'/></td></tr></table></div> ";
 	$("#chat-message-box").html(box);  
 }
 
