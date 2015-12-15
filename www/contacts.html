@@ -22,9 +22,14 @@
 	 <link rel="stylesheet" type="text/css" href="css/custom.css" />
 	 
 	 <script src="js/web-service.js"></script> 
+	 <link rel="stylesheet" type="text/css" href="css/chat-style.css" /> 
     <title>Pigeon</title>
 	<script>
 		status = isUser();
+		loadAllPigeons();
+		$(document).ready(function(){
+			setInterval("loadAllPigeons()",100000);
+		});
 	</script>
 	<style>
 		/*.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head + body .ui-btn.ui-btn-a, .ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head + body .ui-btn.ui-btn-a:visited{
@@ -35,18 +40,30 @@
     </head>
     <body> 
 	<div id="pagedimmer"></div>
-		<div class="container"> 
-				<div data-role="header">
-					<div class="row"> 
-						<div class="col-sm-2">  
-							<h3 class="text-left">
-								<img src="img/white-pigeon.png" width="30px" height="30px"/>  
-							</h3>
-						</div>  
-					</div>
-				</div> 
-			<div class="row" style="padding-left:25px;padding-right:25px;padding-top:10px;padding-bottom:10px" id="pigeons">
-					<script>loadAllPigeons();</script>
+		<div data-role="page"> 
+				<div data-role="header" style="padding-bottom: 2px;padding-left:7px;padding-top:7px;padding-right:7px"> 
+			<img src="img/back.png"   class="backbutton" onclick="goBack()"/> 
+			<table style="float: right; border-collapse: collapse;
+    border-spacing: 0;" class="ui-responsive">
+				<tr>
+					<td>
+						<label id="nameUser"></label> 
+					</td>
+				</tr>			
+				<tr>
+					<td>
+						<lable id="status" ></lable>
+					</td>
+				</tr>	
+				
+			</table>
+			<img src="img/sample.jpg" class="pic-circle-corner" style="float: right"/>
+			<script>
+				displayName(getParameterByName('name'));
+				activeOrNot(getParameterByName('id'));
+			</script>
+		</div>
+			<div class="row" style="padding-left:25px;padding-right:25px;padding-top:10px;padding-bottom:10px" id="pigeons"> 
 				  
 			</div> 
 			<div class="row">

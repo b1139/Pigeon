@@ -171,7 +171,7 @@ function doLogin(){
 
 function loadAllPigeons(){
 	content = null; 
-	startPageLoad();
+	/*startPageLoad();*/
 			$.ajax({
 				type:'POST', 
 				url:getBaseURL()+"?rquest=loadPigeons",  
@@ -186,7 +186,7 @@ function loadAllPigeons(){
 							$("#pigeons").html(responseText);
 							$("#pigeons").trigger('create'); 
 						} 		
-						endPageLoad(); 
+						/*endPageLoad(); */
 				},			
 			});
 }
@@ -314,8 +314,8 @@ function sendTextMessage(from,to){
         return false;
     } 
 
-function displayName(name){   
-	$("#nameUser").text(name); 
+function display(id,name){   
+	$("#"+id).text(name); 
 }
 
 function displayMessageBox(toUserId){
@@ -358,6 +358,103 @@ function loadCurrentChat(){
 		data:{'userId':userId},
 		success:function(response){ 
 				$("#currentChat").html(response);
+				$("#currentChat").trigger('create'); 
 			} 
 	});
 } 
+
+function goBack(){
+	  window.history.back();
+}
+
+function validateGroup(){
+	if($.trim($('#gname').val()) == '' ){ 
+		showMessage('Please Enter Group Name');
+		$('#gname').select();
+		return false;
+	}else{
+		startPageLoad();
+		gname = $('#gname').val();
+		userId = localStorage.getItem('userId');
+		profile_pic = "groupIcon.png";
+		$.ajax({
+			type:'POST', 
+			url:getBaseURL()+"?rquest=createGroup",
+			data:{
+					'gname':gname,
+					'userId':userId,
+					'pic':profile_pic
+					},
+			success:function(responseText){ 
+					endPageLoad(); 
+					if(responseText == 0)
+					{
+						 showMessage("Failed to create Group...");
+					}
+					else
+					{ 
+						localStorage.setItem('groupId',responseText); 
+						 window.location.href = 'addcontacts-group.html?groupName='+gname;
+					} 		
+			} 
+		}); 
+	}
+}
+
+function searchPigeons(){
+	content = null; 
+	groupId = localStorage.getItem('groupId'); 
+	userId = localStorage.getItem('userId');
+	/*startPageLoad();*/
+			$.ajax({
+				type:'POST', 
+				url:getBaseURL()+"?rquest=searchPigeons",  
+				data:{'userId':userId,'groupId':groupId},
+				success:function(responseText){ 
+						if(responseText == 0)
+						{ 
+							showMessage("No Pigeons are Available !!!");
+						}
+						else
+						{ 
+							$("#pigeons").html(responseText);
+							$("#pigeons").trigger('create'); 
+						} 		
+						/*endPageLoad(); */
+				},			
+			});
+}
+
+function addContatsToGroup(){
+	
+	
+	groupId = localStorage.getItem('groupId'); 
+	contacts = [];
+	i=0;
+	$("form#addparticipants :input:checkbox:checked ").each(function(){
+	 contacts[i] = $(this).val(); // This is the jquery object of the input, do what you will
+	 i++; 
+	});  
+	
+	if(contacts.length == 0){ 
+		showMessage("Select Atleast one contact to add !!!");
+		return false;
+	}
+	startPageLoad();
+			$.ajax({
+				type:'POST', 
+				url:getBaseURL()+"?rquest=addParticipants",  
+				data:{'groupId':groupId,'contacts':contacts},
+				success:function(responseText){ 
+						if(responseText == 0)
+						{ 
+							showMessage("Colud Not Add Contacts to the Group !!!");
+						}
+						else
+						{ 
+							 console.log(responseText);
+						} 		
+						endPageLoad(); 
+				},			
+			});
+}
