@@ -27,11 +27,11 @@
     <title>Pigeon</title>
 	<script>
 		status = isUser(); 
-		loadHistory(getParameterByName('id'));
-		displayMessageBox(getParameterByName('id')); 
+		loadGroupHistory(getParameterByName('groupId'));
+		displayGroupMessageBox(getParameterByName('groupId')); 
 		$(document).ready(function(){
-												setInterval("loadHistory(getParameterByName('id'))",3000);
-												setTimeout(displayMessageBox(getParameterByName('id')));
+												setInterval("loadGroupHistory(getParameterByName('groupId'))",3000);
+												setTimeout(displayGroupMessageBox(getParameterByName('groupId')));
 							var inputFields = [
 						   {
 						    labelId: '#text',
@@ -81,20 +81,20 @@
     border-spacing: 0;" class="ui-responsive">
 				<tr>
 					<td>
-						<label id="nameUser"></label> 
+						<label id="nameGroup"></label> 
 					</td>
 				</tr>			
 				<tr>
 					<td>
-						<lable id="status" ></lable>
+						<lable id="participants" ></lable>
 					</td>
 				</tr>	
 				
 			</table>
 			<img src="img/sample.jpg" class="pic-circle-corner" style="float: right"/>
 			<script>
-				display('nameUser',getParameterByName('name'));
-				activeOrNot(getParameterByName('id'));
+				display('nameGroup',getParameterByName('groupName'));
+				getActiveParticipants(getParameterByName('groupId'));
 			</script>
 		</div>
 		<div data-role="main" class="ui-content" style="width:100%">

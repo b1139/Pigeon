@@ -280,9 +280,15 @@ function acceptContactRequest(from,to){
 		endPageLoad();
 }
 
-function sendTextMessage(from,to){
+function sendTextMessage(from,to,type){
 	var fromUser = ""+from;
 	var toUser = ""+to;
+	msgType = "";
+	if(type == 0){
+		msgType = "single";
+	}else if(type == 1){
+		msgType = "group";
+	}
 	var message = $("#message-to-send").val(); 
 	startPageLoad(); 
 	if((fromUser.length > 0) && (toUser.length > 0)){ 
@@ -292,7 +298,8 @@ function sendTextMessage(from,to){
 			data:{
 					'fromUser':fromUser,
 					'toUser':toUser,
-					'message':message
+					'message':message,
+					'type':msgType
 				},
 			success:function(response){ 
 					if(response != 0){
@@ -320,7 +327,8 @@ function display(id,name){
 
 function displayMessageBox(toUserId){
 	var fromUserId = localStorage.getItem('userId');
-	var box = "<div class='chat-message clearfix'><table class='col-sm-12'><tr><td style='width:95%'><textarea name='message-to-send' id='message-to-send' placeholder ='Type your message' rows='3' onkeypress='if(handle(event)){sendTextMessage("+fromUserId+","+toUserId+");}'></textarea>  <!-- <i class='fa fa-file-o'></i> &nbsp;&nbsp;&nbsp;<i class='fa fa-file-image-o'></i> --><td style='width:5%;text-align:right'><img src='img/logo.png' style='cursor:pointer;' width='40px' height='40px' onclick='sendTextMessage("+fromUserId+","+toUserId+")'/></td></tr></table></div> ";
+	type = 0;
+	var box = "<div class='chat-message clearfix'><table class='col-sm-12'><tr><td style='width:95%'><textarea name='message-to-send' id='message-to-send' placeholder ='Type your message' rows='3' onkeypress='if(handle(event)){sendTextMessage("+fromUserId+","+toUserId+","+type+");}'></textarea>  <!-- <i class='fa fa-file-o'></i> &nbsp;&nbsp;&nbsp;<i class='fa fa-file-image-o'></i> --><td style='width:5%;text-align:right'><img src='img/logo.png' style='cursor:pointer;' width='40px' height='40px' onclick='sendTextMessage("+fromUserId+","+toUserId+","+type+")'/></td></tr></table></div> ";
 	$("#chat-message-box").html(box);  
 }
 
@@ -426,8 +434,8 @@ function searchPigeons(){
 }
 
 function addContatsToGroup(){
-	
-	
+	userId = localStorage.getItem('userId');
+	gname = $("#nameGroup").val();
 	groupId = localStorage.getItem('groupId'); 
 	contacts = [];
 	i=0;
@@ -444,7 +452,7 @@ function addContatsToGroup(){
 			$.ajax({
 				type:'POST', 
 				url:getBaseURL()+"?rquest=addParticipants",  
-				data:{'groupId':groupId,'contacts':contacts},
+				data:{'groupId':groupId,'contacts':contacts,'userId':userId},
 				success:function(responseText){ 
 						if(responseText == 0)
 						{ 
@@ -452,9 +460,45 @@ function addContatsToGroup(){
 						}
 						else
 						{ 
-							 console.log(responseText);
+							 window.location.href = "group_chat.html?groupId="+groupId+"&groupName="+gname;
 						} 		
 						endPageLoad(); 
 				},			
 			});
+}
+
+function loadGroupHistory(groupId){   
+	startPageLoad(); 
+	userId = localStorage.getItem('userId');  
+	$.ajax({
+		type:'POST',
+		url	:getBaseURL()+"?rquest=loadGroupChatHistory",
+		data:{
+				'userId':localStorage.getItem('userId'),
+				'groupId':groupId
+			},
+		success:function(response){  
+				 	$("#chat1").html(response);
+					if ($('#atc').length > 0) {
+					      $("#chat-message-box").css("display","none");
+					}else{ 
+						 $("#chat-message-box").css("display","block"); 
+						$("div.chat-history").scrollTop(999999); 
+					}
+				
+				 /*$("#foc").focus(); */ 
+			}
+	});
+	endPageLoad();
+}
+
+function displayGroupMessageBox(groupId){
+	var fromUserId = localStorage.getItem('userId');
+	type = 1;
+	var box = "<div class='chat-message clearfix'><table class='col-sm-12'><tr><td style='width:95%'><textarea name='message-to-send' id='message-to-send' placeholder ='Type your message' rows='3' onkeypress='if(handle(event)){sendTextMessage("+fromUserId+","+groupId+","+type+");}'></textarea>  <!-- <i class='fa fa-file-o'></i> &nbsp;&nbsp;&nbsp;<i class='fa fa-file-image-o'></i> --><td style='width:5%;text-align:right'><img src='img/logo.png' style='cursor:pointer;' width='40px' height='40px' onclick='sendTextMessage("+fromUserId+","+groupId+","+type+")'/></td></tr></table></div> ";
+	$("#chat-message-box").html(box);  
+}
+
+function getActiveParticipants(groupId){
+	
 }

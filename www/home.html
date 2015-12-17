@@ -26,6 +26,10 @@
 	<script>
 		status = isUser();
 		activeUser();
+		$(document).ready(function(){
+			loadCurrentChat();	
+			setInterval("loadCurrentChat()",10000);
+		});
 	</script>
 	<style>
 		. ui-btn{
@@ -43,6 +47,7 @@
 								        <li ><a data-toggle="tab" href="#" style="color:#fff">Friends</a></li>
 								    	<li class="active"><a data-toggle="tab" href="#" >Chats</a></li>
 									    <li><a   href="contacts.html" style="color:#fff" data-ajax="false">Search</a></li>
+									 	<li><a   href="#createChats" data-position-to="#position-header"  data-rel="popup" style="color:#fff"  data-transition="flip"><span class="glyphicon-plus"></span><a href="#" onclick="signOut()" style="color:#fff">SignOut</a> </a></li>
 								    </ul> 
 		</div>
 		<div data-role="main" class="ui-content">
@@ -52,12 +57,14 @@
 					 
 				</div>
 			</div> 
-		</div>
-		<div data-role="footer" data-position="fixed">
-			<script>
-				loadCurrentChat();	
-			</script>
+		</div> 
 			<script type="text/javascript" src="cordova.js"></script>  
+		<div data-role="popup" id="createChats">
+			<ul data-role="listview" data-inset="true">
+				<li data-role="list-divider">Choose an action</li>
+				<li><a href="contacts.html" data-ajax="false">New Chat</a></li>
+				<li><a href="creategroup.html" data-ajax="false">New Group</a></li>
+			</ul>
 		</div>
 	</div> 
         
