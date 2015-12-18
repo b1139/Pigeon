@@ -30,7 +30,7 @@
 		loadHistory(getParameterByName('id'));
 		displayMessageBox(getParameterByName('id')); 
 		$(document).ready(function(){
-												setInterval("loadHistory(getParameterByName('id'))",3000);
+												/*setInterval("loadHistory(getParameterByName('id'))",3000);*/
 												setTimeout(displayMessageBox(getParameterByName('id')));
 							 							
 		});
@@ -86,7 +86,7 @@
 				</div> 
 			</div>
 		</div>
-		<div data-role="footer" data-position="fixed" style="background-color: #fff;border-color: #fff"><label id="text" ></label>
+		<div data-position="fixed" style="background-color: #fff;border-color: #fff" >
 			<div id="chat-message-box" style="display:none;padding-bottom:20px">
 			 </div>
 		</div> 

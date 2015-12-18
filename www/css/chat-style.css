@@ -89,7 +89,7 @@ body {
 .chat .chat-history { 
   border-bottom: 2px solid white;
   overflow-y: scroll;
-  height: 465px;
+  height: 408px;
 }
 .chat .chat-history .message-data {
   margin-bottom: 15px;
@@ -132,7 +132,7 @@ body {
   left: 93%;
 }
  .chat-message {
-  padding: 10px;
+  padding: 0px 5px;
 }
  .chat-message textarea {
   width: 100%;
