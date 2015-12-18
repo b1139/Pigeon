@@ -32,29 +32,7 @@
 		$(document).ready(function(){
 												setInterval("loadHistory(getParameterByName('id'))",3000);
 												setTimeout(displayMessageBox(getParameterByName('id')));
-							var inputFields = [
-						   {
-						    labelId: '#ltext',
-						     inputId: '#message-to-send'
-						   }
-						 ];
-						   
-						 for(var i = 0; i < inputFields.length; i++) {
-						  /* console.log('inputFields[i].inputId = '+inputFields[i].inputId);*/
-						   var element = document.querySelector(inputFields[i].inputId);
-						   element.addEventListener('focus', getEventListener(inputFields[i].labelId), true);
-						   element.addEventListener('blur', function() {
-						         console.log('blurEvent');
-						     window.location.hash = "";
-						   }, true);
-						 }
-
-						 function getEventListener(urlHash) {
-						   return function(e) {
-						   /*  console.log('focusEvent = '+urlHash);*/
-						     window.location.hash = urlHash;
-						   };
-						 }									
+							 							
 		});
 	</script>
 	<style>
