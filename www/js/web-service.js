@@ -328,7 +328,7 @@ function display(id,name){
 function displayMessageBox(toUserId){
 	var fromUserId = localStorage.getItem('userId');
 	type = 0;
-	var box = "<div class='chat-message clearfix'><table class='col-sm-12'><tr><td style='width:95%'><textarea name='message-to-send' id='message-to-send' placeholder ='Type your message' rows='3' onkeypress='if(handle(event)){sendTextMessage("+fromUserId+","+toUserId+","+type+");}'></textarea>  <!-- <i class='fa fa-file-o'></i> &nbsp;&nbsp;&nbsp;<i class='fa fa-file-image-o'></i> --><td style='width:5%;text-align:right'><img src='img/logo.png' style='cursor:pointer;' width='40px' height='40px' onclick='sendTextMessage("+fromUserId+","+toUserId+","+type+")'/></td></tr></table></div> ";
+	var box = "<div class='chat-message clearfix'><table class='col-sm-12'><tr><td style='width:95%'><label id='ltext'></label><textarea name='message-to-send' id='message-to-send' placeholder ='Type your message' rows='3' onkeypress='if(handle(event)){sendTextMessage("+fromUserId+","+toUserId+","+type+");}'></textarea>  <!-- <i class='fa fa-file-o'></i> &nbsp;&nbsp;&nbsp;<i class='fa fa-file-image-o'></i> --><td style='width:5%;text-align:right'><img src='img/logo.png' style='cursor:pointer;' width='40px' height='40px' onclick='sendTextMessage("+fromUserId+","+toUserId+","+type+")'/></td></tr></table></div> ";
 	$("#chat-message-box").html(box);  
 }
 
