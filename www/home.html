@@ -21,6 +21,7 @@
 	 
 	 <link rel="stylesheet" type="text/css" href="css/custom.css" />
 	 <link rel="stylesheet" type="text/css" href="css/chat-style.css" /> 
+	  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
 	 <script src="js/web-service.js"></script> 
     <title>Pigeon</title> 
 	<script>
@@ -28,7 +29,7 @@
 		activeUser();
 		$(document).ready(function(){
 			loadCurrentChat();	
-			setInterval("loadCurrentChat()",10000);
+			/*setInterval("loadCurrentChat()",10000);*/
 		});
 	</script>
 	<style>
@@ -40,7 +41,7 @@
     </head>
     <body> 
 	<div data-role="page">
-		<div data-role="header" tyle="padding-left:7px;padding-top:7px;padding-right:7px"> 
+		<div data-role="header" style="padding-left:7px;padding-top:7px;padding-right:7px"> 
 			<img src="img/white-pigeon.png" width="40px" height="40px"/>   
 			<img src="img/sample.jpg" class="pic-circle-corner" style="float: right;"/> 
 			 <ul class="nav nav-tabs">
