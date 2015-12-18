@@ -92,7 +92,7 @@ body {
   height: 435px;
 }
 .chat .chat-history .message-data {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .chat .chat-history .message-data-time {
   color: #a8aab1;
@@ -100,11 +100,14 @@ body {
 }
 .chat .chat-history .message {
   color: white;
-  padding: 7px 15px;
+  padding-top: 5px;
+  padding-bottom:5px;
+  padding-left:15px;
+  padding-right:10px;
   line-height: 26px;
-  font-size: 16px;
+  font-size: 15px;
   border-radius: 7px;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   width: 90%;
   position: relative;
 }
