@@ -3,13 +3,13 @@
   box-sizing: border-box;
 }
 
-body {
+/*body {
   background: #C5DDEB;
   font: 14px/20px "Lato", Arial, sans-serif;
   padding: 40px 0;
   color: white;
 }
-
+*/
 .container { 
   background: #444753; 
 }

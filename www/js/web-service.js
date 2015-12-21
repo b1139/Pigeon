@@ -502,3 +502,16 @@ function displayGroupMessageBox(groupId){
 function getActiveParticipants(groupId){
 	
 }
+
+function loadFriendsList(){
+	userId = localStorage.getItem('userId');  
+	$.ajax({
+		type:"post",
+		url:getBaseURL()+"?rquest=loadFriendsList",
+		data:{'userId':userId},
+		success:function(response){ 
+				$("#currentChat").html(response);
+				$("#currentChat").trigger('create'); 
+			} 
+	});
+} 
