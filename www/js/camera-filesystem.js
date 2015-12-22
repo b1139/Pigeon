@@ -13,11 +13,11 @@
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, FileIO.gotFS, FileIO.errorHandler);
     }
 	
-	$(".fa-file-image-o").on('click', function() {
+	/*$(".fa-file-image-o").on('click', function() {
 getPhoto(pictureSource.PHOTOLIBRARY);
-});
+});*/
  
-function getPhoto(source) {
+function getPhoto(source) {alert('s');
     // Retrieve image file location from specified source
     navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
                                 destinationType: destinationType.FILE_URI,

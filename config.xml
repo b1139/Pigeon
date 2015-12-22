@@ -71,11 +71,7 @@
   <allow-intent href="geo:*"/>
   <platform name="android">
     <allow-intent href="market:*"/>
-  </platform>
-  <feature name="File">
-    <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-  </feature>
-	
+  </platform> 
 
   <platform name="ios">
     <!--<allow-intent href="itms:*"/>

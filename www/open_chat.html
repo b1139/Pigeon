@@ -25,7 +25,8 @@
 	  <link rel="stylesheet" type="text/css" href="css/chat-style.css" /> 
 	  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
     <title>Pigeon</title>
-	<script src="js/camera-filesystem.js"/></script>
+	 <script type="text/javascript" src="cordova.js"></script>   
+	<!--<script src="js/camera-filesystem.js"/></script>-->
 	<script>
 		status = isUser(); 
 		loadHistory(getParameterByName('id'));
@@ -36,7 +37,41 @@
 							 							
 		});
 		
-		
+		var isPhoneGapReady = false;
+
+function init() {
+
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Older versions of Blackberry < 5.0 don't support 
+    // PhoneGap's custom events, so instead we need to 
+    // perform an interval check every 500 milliseconds 
+    // to see if PhoneGap is ready.  Once done, the 
+    // interval will be cleared and normal processing
+    // can begin
+
+    var intervalID = window.setInterval(function() {
+          if (PhoneGap.available) {
+              onDeviceReady();
+          }
+      }, 500);
+
+        // REMOVE THIS
+        // }
+
+    function onDeviceReady() {
+        window.clearInterval(intervalID);
+
+        // set to true
+        isPhoneGapReady = true;
+    alert("The device is now ready");
+    }
+
+// PUT THIS HERE
+}
+
+// Set an onload handler to call the init function
+window.onload = init;
 		
 	</script>
 	<style>
@@ -95,6 +130,6 @@
 			 </div>
 		</div> 
 		</div>
-        <script type="text/javascript" src="cordova.js"></script>   
+       
     </body>
 </html>
