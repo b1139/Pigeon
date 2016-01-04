@@ -13,9 +13,9 @@
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, FileIO.gotFS, FileIO.errorHandler);
     }
 	
-	$(".fa-file-image-o").on('click', function() {
+/*	$(".fa-file-image-o").on('click', function() {*/
 getPhoto(pictureSource.PHOTOLIBRARY);
-});
+/*});*/
  
 function getPhoto(source) { 
     // Retrieve image file location from specified source
