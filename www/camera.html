@@ -39,7 +39,7 @@
     
 	// Called when a photo is successfully retrieved
     //
-    function onPhotoFileSuccess(imageData) {
+    function onPhotoFileSuccess(imageData) {alert('file');
       // Get image handle
       console.log(JSON.stringify(imageData));
       
@@ -92,7 +92,7 @@
     //
     function getPhoto(source) {alert('getPhoto');
       // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
+      navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, 
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
