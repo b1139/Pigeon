@@ -2,23 +2,24 @@
     //
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicity call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
+   /* onDeviceReady: function() {
         app.receivedEvent('deviceready');
-    },
+    },*/
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
+   /* receivedEvent: function(id) {
         console.log('Received Event: ' + id);
         // request a new file system object then pass that to the gotFS() method.
         // gotFS() is a simple setter for a global var that the FileIO methods will use later.
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, FileIO.gotFS, FileIO.errorHandler);
-    }
+    }*/
 	
 	/*$(".fa-file-image-o").on('click', function() {
 getPhoto(pictureSource.PHOTOLIBRARY);
 });*/
  
-function getPhoto(source) {alert('s');
+function getPhoto(source) { 
     // Retrieve image file location from specified source
+	alert('get Photo');
     navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
                                 destinationType: destinationType.FILE_URI,
                                 saveToPhotoAlbum: false,

@@ -72,7 +72,9 @@
   <platform name="android">
     <allow-intent href="market:*"/>
   </platform> 
-
+	<feature name="Camera">
+		<param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+	</feature>
   <platform name="ios">
     <!--<allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>-->
