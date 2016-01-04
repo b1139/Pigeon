@@ -3,7 +3,7 @@
   <head>
     <title>Capture Photo</title>
     <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1"/>
-    <script type="text/javascript" charset="utf-8" src="js/phonegap.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
     <script type="text/javascript" charset="utf-8">
 
     var pictureSource;   // picture source
@@ -90,7 +90,7 @@
     
     // A button will call this function
     //
-    function getPhoto(source) {
+    function getPhoto(source) {alert('getPhoto');
       // Retrieve image file location from specified source
       navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50, 
         destinationType: destinationType.FILE_URI,
@@ -106,8 +106,8 @@
     </script>
   </head>
   <body>
-    <button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
-    <button onclick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>
+   <!-- <button onclick="capturePhotoWithData();">Capture Photo With Image Data</button> <br>
+    <button onclick="capturePhotoWithFile();">Capture Photo With Image File URI</button> <br>-->
     <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
     <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
