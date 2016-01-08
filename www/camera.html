@@ -66,7 +66,7 @@
       var options = new FileUoloadOptions();
 	  options.fileKey = "file";
 	  options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
-	  
+	  alert(imageURI);
 	  var params = new Object();
       params.value1 = "test";
       params.value2 = "param";
@@ -79,6 +79,12 @@
 	  
     }
 
+    function win(){
+		alert('success');
+	}
+	function fail(){
+		alert('Failed');
+	}
     // A button will call this function
     //
     function capturePhotoWithData() {
@@ -94,7 +100,7 @@
     //
     function getPhoto(source) {alert('getPhoto');
       // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, 
+      navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50, 
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
