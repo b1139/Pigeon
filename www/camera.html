@@ -62,7 +62,7 @@
     //
     function uploadPhoto(imageURI) {
 	  var siteURL = getSiteURL();
-	  
+	  alert(siteURL);
       var options = new FileUoloadOptions();
 	  options.fileKey = "file";
 	  options.fileName = imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -76,13 +76,13 @@
 	  var ft = new FileTransfer();
 	  ft.upload(imageURI,siteURL+"/upload.php",win,fail);
 	  
-	  
+	  alert('completed uploading');
     }
 
-    function win(){
+    function win(r){
 		alert('success');
 	}
-	function fail(){
+	function fail(error){
 		alert('Failed');
 	}
     // A button will call this function
