@@ -7,6 +7,23 @@ function getBaseURL() {
 	}
 }
  
+function getUploadURL() {
+    var url = location.href;  // entire url including querystring - also: window.location.href; 
+	if(url.indexOf("http://localhost") != -1){
+		return "http://localhost:8090/pigeon/uploads";
+	}else{
+		return "http://97.74.182.1/creatusftp/uploads";
+	}
+}
+
+function getSiteURL() {
+    var url = location.href;  // entire url including querystring - also: window.location.href; 
+	if(url.indexOf("http://localhost") != -1){
+		return "http://localhost:8090/pigeon";
+	}else{
+		return "http://creatustent.com/pigeon";
+	}
+}
 
 function hideFormMessages()
 {
