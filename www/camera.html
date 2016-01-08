@@ -75,7 +75,7 @@
       options.params = params;
       options.chunkedMode = false;// If it is not set the PHP server won't able to read this image'
 	  var ft = new FileTransfer();
-	  ft.upload(imageURI,siteURL+"/upload.php",win,fail);
+	  ft.upload(imageURI,siteURL+"/upload.php",win,fail,options);
 	  
 	  alert('completed uploading');
     }
