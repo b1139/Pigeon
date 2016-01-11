@@ -9,30 +9,30 @@
 	
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value 
-
+	var userId = localStorage.getItem('userId');
     // Wait for PhoneGap to connect with the device
     //
     document.addEventListener("deviceready",onDeviceReady,false);
- 
+ var src = userId+"_"+"myrecording.amr";
   // Record audio
     //
     function recordAudio() {
-        var src = "myrecording.amr";
+        var src = userId+"_"+"myrecording.amr";
         var mediaRec = new Media(src, onSuccess, onError);
 
         // Record audio
         mediaRec.startRecord();
 
         // Stop recording after 10 sec
-        var recTime = 0;
+       /* var recTime = 0;
         var recInterval = setInterval(function() {
             recTime = recTime + 1;
             setAudioPosition(recTime + " sec");
-            /*if (recTime >= 10) {
+            if (recTime >= 10) {
                 clearInterval(recInterval);
                 mediaRec.stopRecord();
-            }*/
-        }, 1000);
+            }
+        }, 1000);*/
     }
 
     // device APIs are available
@@ -62,8 +62,29 @@
 	
 	//Stop Recording
 	function stopRecording(){ 
+	alert('stop recording');
                 /*clearInterval(recInterval);*/
                 mediaRec.stopRecord(); 
+				upload();
+	}
+	
+	function upload(){
+		alert('upload');
+		 var ft = new FileTransfer();
+	  ft.upload(src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
+	}
+	
+	
+	function win(r){
+		alert('success'); 
+		alert("Response = " + r.response);
+		alert("Sent = " + r.bytesSent);
+		 var largeImage = document.getElementById('largeImage');
+ 
+		
+	}
+	function fail(error){
+		alert('Failed');
 	}
     </script>
   </head>
