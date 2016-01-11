@@ -73,6 +73,9 @@
     <allow-intent href="market:*"/>
   </platform>  
 <feature name="http://api.phonegap.com/1.0/camera"/>
+<feature name="Media">
+    <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
+</feature>
 <feature name="http://api.phonegap.com/1.0/file"/> 
   <platform name="ios">
     <!--<allow-intent href="itms:*"/>
