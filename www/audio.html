@@ -65,7 +65,14 @@
 	alert('stop recording');
                 /*clearInterval(recInterval);*/
                 mediaRec.stopRecord(); alert('record stopped');
-				upload();
+				var params = new Object();
+			      params.value1 = "test";
+			      params.value2 = "param";
+			 		
+			      options.params = params;
+			      options.chunkedMode = false;// If it is not set the PHP server won't able to read this image'
+				 var ft = new FileTransfer();
+	  ft.upload(src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
 	}
 	
 	function upload(){
