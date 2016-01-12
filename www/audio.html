@@ -17,8 +17,8 @@
   // Record audio
     //
     function recordAudio() {
-       
-        var mediaRec = new Media(src, onSuccess, onError);
+       var srcc = userId+"_"+"myrecording.amr";
+        var mediaRec = new Media(srcc, onSuccess, onError);
 
         // Record audio
         mediaRec.startRecord();
@@ -71,6 +71,7 @@
 	function upload(){
 		alert('upload');
 		 var ft = new FileTransfer();
+		 alert(src);
 	  ft.upload(src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
 	}
 	
