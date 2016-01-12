@@ -12,11 +12,12 @@
 	var userId = localStorage.getItem('userId');
     // Wait for PhoneGap to connect with the device
     //
-    document.addEventListener("deviceready",onDeviceReady,false); 
+    document.addEventListener("deviceready",onDeviceReady,false);
+ var src = userId+"_"+"myrecording.amr";
   // Record audio
     //
     function recordAudio() {
-       var srcc = userId+"_"+"myrecording.amr";
+        var srcc = userId+"_"+"myrecording.amr";
         var mediaRec = new Media(srcc, onSuccess, onError);
 
         // Record audio
@@ -43,7 +44,7 @@
     // onSuccess Callback
     //
     function onSuccess() {
-        alert("recordAudio():Audio Success");
+        console.log("recordAudio():Audio Success");
     }
 
     // onError Callback
@@ -64,16 +65,14 @@
 	alert('stop recording');
                 /*clearInterval(recInterval);*/
                 mediaRec.stopRecord(); 
-				alert('stoped alert');
-				//uploadAudio();
+				upload();
 	}
 	
-	/*function uploadAudio(){
+	function upload(){
 		alert('upload');
 		 var ft = new FileTransfer();
-		 alert(src);
 	  ft.upload(src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
-	}*/
+	}
 	
 	
 	function win(r){
