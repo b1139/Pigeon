@@ -65,10 +65,10 @@
 	alert('stop recording');
                 /*clearInterval(recInterval);*/
                 mediaRec.stopRecord(); 
-				upload();
+				upload(mediaRec);
 	}
 	
-	function upload(){
+	function upload(media){
 		alert('upload');
 		 var ft = new FileTransfer();
 	  ft.upload(src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
