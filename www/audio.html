@@ -13,11 +13,11 @@
     // Wait for PhoneGap to connect with the device
     //
     document.addEventListener("deviceready",onDeviceReady,false);
- var src = userId+"_"+"myrecording.amr";
+ var src = "file://"+userId+"_"+"myrecording.amr";
   // Record audio
     //
     function recordAudio() {
-        var srcc = userId+"_"+"myrecording.amr";
+        var srcc = "file://"+userId+"_"+"myrecording.amr";
         var mediaRec = new Media(src, onSuccess, onError);
 
         // Record audio
