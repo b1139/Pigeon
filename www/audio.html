@@ -44,7 +44,7 @@
     // onSuccess Callback
     //
     function onSuccess() {
-        console.log("recordAudio():Audio Success");
+        alert("recordAudio():Audio Success");
     }
 
     // onError Callback
@@ -65,10 +65,11 @@
 	alert('stop recording');
                 /*clearInterval(recInterval);*/
                 mediaRec.stopRecord(); 
-				upload();
+				alert('stoped alert');
+				uploadAudio();
 	}
 	
-	function upload(){
+	function uploadAudio(){
 		alert('upload');
 		 var ft = new FileTransfer();
 		 alert(src);
