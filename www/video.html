@@ -19,7 +19,7 @@
   // Called when capture operation is finished
     //
     function captureSuccess(mediaFiles) { 
-            uploadFile(mediaFiles); 
+            uploadFile(mediaFiles[0]); 
     }
 
     // Called if something bad happens.
@@ -43,16 +43,15 @@
             path = mediaFile.fullPath,
             name = mediaFile.name;
 
-       /* ft.upload(path,
-            "http://my.domain.com/upload.php",
+        ft.upload(path,getBaseURL()+"?rquest=uploadVideo",
             function(result) {
-                console.log('Upload success: ' + result.responseCode);
-                console.log(result.bytesSent + ' bytes sent');
+                alert('Upload success: ' + result.responseCode);
+                alert(result.bytesSent + ' bytes sent');
             },
             function(error) {
-                console.log('Error uploading file ' + path + ': ' + error.code);
+                alert('Error uploading file ' + path + ': ' + error.code);
             },
-            { fileName: name });*/
+            { fileName: name });
     }
     </script>
   </head>
