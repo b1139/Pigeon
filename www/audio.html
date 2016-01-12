@@ -19,11 +19,11 @@
     function recordAudio() {
         var srcc = userId+"_"+"myrecording.amr";
 		alert(srcc);
-        //var mediaRec = new Media(srcc, onSuccess, onError);
+       var mediaRec = new Media(srcc, onSuccess, onError);
 
         // Record audio
-        //mediaRec.startRecord();
-		navigator.device.capture.captureAudio(uploadFile, onError,  {limit:1}
+       mediaRec.startRecord();
+		//navigator.device.capture.captureAudio(uploadFile, onError,  {limit:1}
 );
         // Stop recording after 10 sec
        /* var recTime = 0;
@@ -67,16 +67,16 @@
 	alert('stop recording');
                 /*clearInterval(recInterval);*/
                 mediaRec.stopRecord(); 
-				//upload();
+				upload();
 	}
 	
 	function upload(){
-		alert('upload');
+		alert('upload'+mediaRec);
 		 var ft = new FileTransfer();
 	  ft.upload("file:///storage/emulated/0/"+src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
 	}
 	
-	function uploadFile(mediaFile) {
+	/*function uploadFile(mediaFile) {
         var ft = new FileTransfer(),
             path = mediaFile.fullPath,
             name = mediaFile.name;
@@ -89,7 +89,7 @@
                 console.log('Error uploading file ' + path + ': ' + error.code);
             },
             { fileName: name });
-    }
+    }*/
 	function win(r){
 		alert('success'); 
 		alert("Response = " + r.response);
