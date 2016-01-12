@@ -13,11 +13,12 @@
     // Wait for PhoneGap to connect with the device
     //
     document.addEventListener("deviceready",onDeviceReady,false);
- var src = userId+"_"+"myrecording.amr";
+    var src = userId+"_"+"myrecording.amr";
   // Record audio
     //
     function recordAudio() {
         var srcc = userId+"_"+"myrecording.amr";
+		alert(srcc);
         var mediaRec = new Media(srcc, onSuccess, onError);
 
         // Record audio
@@ -65,13 +66,13 @@
 	alert('stop recording');
                 /*clearInterval(recInterval);*/
                 mediaRec.stopRecord(); 
-				upload();
+				//upload();
 	}
 	
 	function upload(){
 		alert('upload');
 		 var ft = new FileTransfer();
-	  ft.upload(src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
+	  ft.upload("file:///storage/emulated/0/"+src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
 	}
 	
 	
