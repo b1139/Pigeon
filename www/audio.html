@@ -19,11 +19,12 @@
     function recordAudio() {
         var srcc = userId+"_"+"myrecording.amr";
 		alert(srcc);
-        var mediaRec = new Media(srcc, onSuccess, onError);
+        //var mediaRec = new Media(srcc, onSuccess, onError);
 
         // Record audio
-        mediaRec.startRecord();
-
+        //mediaRec.startRecord();
+		navigator.device.capture.captureAudio(uploadFile, onError,  {limit:1}
+);
         // Stop recording after 10 sec
        /* var recTime = 0;
         var recInterval = setInterval(function() {
@@ -51,8 +52,8 @@
     // onError Callback
     //
     function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
+       var msg = 'An error occurred during capture: ' + error.code;
+        navigator.notification.alert(msg, null, 'Uh oh!');
     }
 
     // Set audio position
@@ -75,7 +76,20 @@
 	  ft.upload("file:///storage/emulated/0/"+src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
 	}
 	
-	
+	function uploadFile(mediaFile) {
+        var ft = new FileTransfer(),
+            path = mediaFile.fullPath,
+            name = mediaFile.name;
+	alert(path);alert(name);
+        ft.upload(path,getBaseURL()+"?rquest=uploadAudio",      function(result) {
+                console.log('Upload success: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes sent');
+            },
+            function(error) {
+                console.log('Error uploading file ' + path + ': ' + error.code);
+            },
+            { fileName: name });
+    }
 	function win(r){
 		alert('success'); 
 		alert("Response = " + r.response);
