@@ -26,29 +26,20 @@
 	  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
     <title>Pigeon</title>
 	 <script type="text/javascript" src="cordova.js"></script>   
-	<!--<script src="js/camera-filesystem.js"/></script>-->
+	<script src="js/camera-filesystem.js"/></script>
 	<script>
 		status = isUser(); 
 		loadHistory(getParameterByName('id'));
 		displayMessageBox(getParameterByName('id')); 
 		$(document).ready(function(){
-												/*setInterval("loadHistory(getParameterByName('id'))",3000);*/
+												setInterval("loadHistory(getParameterByName('id'))",3000);
 												setTimeout(displayMessageBox(getParameterByName('id')));
 							 							
 		});
 		 
-	function getPhoto(source) { 
-    // Retrieve image file location from specified source
-	alert('get Photo');
-    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-                                destinationType: destinationType.FILE_URI,
-                                saveToPhotoAlbum: false,
-                                sourceType: source,
-                                allowEdit: true });
-}
+	 
     document.addEventListener("deviceready", onDeviceReady, false);
-	function onDeviceReady(){alert('inside deviceready');
-		getPhoto(pictureSource.PHOTOLIBRARY);
+	function onDeviceReady(){ 
 	}
     
 		
