@@ -1,6 +1,8 @@
 	 var pictureSource;   // picture source
     var destinationType; // sets the format of returned value  
-
+	
+	var toUser;
+	var type;
     // Called when a photo is successfully retrieved
     //
     function uploadPhoto(imageURI) { 
@@ -12,9 +14,11 @@
 	  pictureSource = imageURI.substr(imageURI.lastIndexOf('/')+1);
 	  alert("Name:"+pictureSource);
 	  alert(imageURI);
+	  
 	  var params = new Object();
       params.userId = localStorage.getItem("userId"); 
- 		
+ 	  params.toUser = toUser;
+	  params.type = type;
       options.params = params;
       options.chunkedMode = false;// If it is not set the PHP server won't able to read this image'
 	  var ft = new FileTransfer();
