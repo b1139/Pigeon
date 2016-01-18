@@ -31,10 +31,15 @@
 		alert('success'); 
 		alert("Response = " + r.response);
 		alert("Sent = " + r.bytesSent);
-		
+		pictureSource=navigator.camera.PictureSourceType;
+		$("#chat1").html(r.response);  
+						$("div.chat-history").scrollTop(999999); 
+						 $("#message-to-send").val("");
+						  $("#message-to-send").focus();
 	}
 	function fail(error){
 		alert('Failed');
+		pictureSource=navigator.camera.PictureSourceType;
 	} 
     
     // A button will call this function
