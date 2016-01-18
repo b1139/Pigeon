@@ -30,7 +30,9 @@
 	<script>
 		status = isUser(); 
 		loadHistory(getParameterByName('id'));
-		displayMessageBox(getParameterByName('id')); 
+		displayMessageBox(getParameterByName('id'));
+		 var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value  
 		$(document).ready(function(){
 												setInterval("loadHistory(getParameterByName('id'))",3000);
 												setTimeout(displayMessageBox(getParameterByName('id')));
@@ -41,6 +43,8 @@
     document.addEventListener("deviceready",onDeviceReady,false);
 	function onDeviceReady(){ 
 	  alert('ready');
+	  pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
 	}
      // A button will call this function
     //
