@@ -1,39 +1,5 @@
-// Called when a photo is successfully retrieved
-    //
-    function onPhotoDataSuccess(imageData) {
-      // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-    }
-    
-	// Called when a photo is successfully retrieved
-    //
-    function onPhotoFileSuccess(imageURI) {alert('file');
-      // Get image handle
-      console.log(JSON.stringify(imageData));
-      
-   	  // Get image handle
-      //
-      var smallImage = document.getElementById('smallImage');
-
-      // Unhide image elements
-      //
-      smallImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      smallImage.src = imageData;
-    }
+	 var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value  
 
     // Called when a photo is successfully retrieved
     //
@@ -47,7 +13,7 @@
 	  alert("Name:"+pictureSource);
 	  alert(imageURI);
 	  var params = new Object();
-      params.value1 = "test";
+      params.value1 = localStorage.getItem("userId");
       params.value2 = "param";
  		
       options.params = params;
@@ -62,31 +28,11 @@
 		alert('success'); 
 		alert("Response = " + r.response);
 		alert("Sent = " + r.bytesSent);
-		// var largeImage = document.getElementById('largeImage');
-
-      // Unhide image elements
-      //
-      //largeImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      //largeImage.src = getSiteURL()+"/rest/uploads/images/"+pictureSource;
 		
 	}
 	function fail(error){
 		alert('Failed');
-	}
-    // A button will call this function
-    //
-    function capturePhotoWithData() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50 });
-    }
-
-    function capturePhotoWithFile() {
-        navigator.camera.getPicture(onPhotoFileSuccess, onFail, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
-    }
+	} 
     
     // A button will call this function
     //
