@@ -13,8 +13,7 @@
 	  alert("Name:"+pictureSource);
 	  alert(imageURI);
 	  var params = new Object();
-      params.value1 = localStorage.getItem("userId");
-      params.value2 = "param";
+      params.userId = localStorage.getItem("userId"); 
  		
       options.params = params;
       options.chunkedMode = false;// If it is not set the PHP server won't able to read this image'
