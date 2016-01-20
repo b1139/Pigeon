@@ -42,6 +42,8 @@
 	function onDeviceReady(){  
 	  pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
+		src = "file:///storage/emulated/0/"+userId+"_"+"myrecording.amr";
+  		mediaRec = new Media(src, onSuccess, onError);
 	}
     
 	</script>
