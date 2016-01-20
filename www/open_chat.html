@@ -36,12 +36,10 @@
 												setInterval("loadHistory(getParameterByName('id'))",3000);
 												setTimeout(displayMessageBox(getParameterByName('id')));
 							 							
-		});
-		 alert('ready in');
+		}); 
 	 
     document.addEventListener("deviceready",onDeviceReady,false);
-	function onDeviceReady(){ 
-	  alert('ready');
+	function onDeviceReady(){  
 	  pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
 	}
