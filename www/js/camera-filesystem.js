@@ -19,6 +19,7 @@
       params.userId = localStorage.getItem("userId"); 
  	  params.toUser = toUser;
 	  params.type = type;
+	  alert(type);
       options.params = params;
       options.chunkedMode = false;// If it is not set the PHP server won't able to read this image'
 	  var ft = new FileTransfer();
