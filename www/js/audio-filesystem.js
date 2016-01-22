@@ -43,10 +43,9 @@
     }
 	
 	//Stop Recording
-	function stopRecording(){ 
-				alert('stop recording');
+	function stopRecording(){  
                 /*clearInterval(recInterval);*/
-                mediaRec.stopRecord(); alert('record stopped');
+                mediaRec.stopRecord(); 
 				 var params = new Object();
 		     	 params.userId = localStorage.getItem("userId"); 
 		 		 params.toUser = toUser;
@@ -60,20 +59,19 @@
 	  ft.upload(src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
 	}
 	
-	function upload(){
-		alert('upload');
+	function upload(){ 
 		 var ft = new FileTransfer();
 	  ft.upload(src,getBaseURL()+"?rquest=uploadAudio",win,fail,options);
 	}
 	
 	
 	function win(r){
-		alert('success'); 
+		/*alert('success'); 
 		alert("Response = " + r.response);
-		alert("Sent = " + r.bytesSent); 
+		alert("Sent = " + r.bytesSent); */
  
 		
 	}
 	function fail(error){
-		alert('Failed'+error);
+	/*	alert('Failed'+error);*/
 	}
