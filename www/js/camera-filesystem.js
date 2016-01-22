@@ -18,6 +18,11 @@
 	  var params = new Object();
       params.userId = localStorage.getItem("userId"); 
  	  params.toUser = toUser;
+	  if(type == 0){
+		type = "single";
+		}else if(type == 1){
+			type = "group";
+		}
 	  params.type = type; 
       options.params = params;
       options.chunkedMode = false;// If it is not set the PHP server won't able to read this image'
