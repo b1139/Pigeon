@@ -27,6 +27,7 @@
     <title>Pigeon</title>
 	 <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 	<script src="js/camera-filesystem.js"/></script>
+	<script src="js/audio-filesystem.js"/></script>
 	<script>
 		status = isUser(); 
 		loadHistory(getParameterByName('id'));
@@ -43,10 +44,10 @@
 	 			var audioImg = document.getElementById("audioId"); 
 				var imgsrc = document.getElementById("audioId").src; 
 				img = imgsrc.split("/"); 
-				if(img[img.length-1] == "audio.png"){alert(1);
+				if(img[img.length-1] == "audio.png"){ 
 					recordAudio();
 					document.getElementById("audioId").src = "img/orange-stop.png";
-				}else{ alert(2);
+				}else{  
 					stopRecording();
 					  document.getElementById("audioId").src = "img/audio.png"; 
 					}
