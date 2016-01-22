@@ -31,7 +31,9 @@
 		status = isUser(); 
 		loadHistory(getParameterByName('id'));
 		displayMessageBox(getParameterByName('id'));
-		
+		$('input, textarea, button, a, select').off('touchstart mousedown').on('touchstart mousedown', function(e) {
+    e.stopPropagation();
+});
 		$(document).ready(function(){
 												setInterval("loadHistory(getParameterByName('id'))",1000);
 												setTimeout(displayMessageBox(getParameterByName('id')));
