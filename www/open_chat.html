@@ -45,9 +45,9 @@
 	 			var audioImg = document.getElementById("audioId"); 
 				var imgsrc = document.getElementById("audioId").src; 
 				img = imgsrc.split("/"); 
-				if(img[img.length-1] == "audio.png"){ 
-				alert("record");
+				if(img[img.length-1] == "audio.png"){  
 					recordAudio();
+					alert("record");
 					document.getElementById("audioId").src = "img/orange-stop.png";
 				}else{  
 					stopRecording();
