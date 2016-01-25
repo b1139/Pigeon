@@ -20,8 +20,7 @@
             }
         }, 1000);*/
     }
- 
-    }
+  
 
     // onSuccess Callback
     //
