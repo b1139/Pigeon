@@ -1,3 +1,4 @@
+//For Application Usage 
 function getBaseURL() {
     var url = location.href;  // entire url including querystring - also: window.location.href; 
 	if(url.indexOf("http://localhost") != -1){
@@ -99,6 +100,7 @@ function doSignUp()
 					}
 					else
 					{
+						localStorage.setItem("lastMessage",0);
 						localStorage.setItem('userId',responseText['username']);
 						window.location.href= 'home.html'; 
 					}
@@ -177,6 +179,7 @@ function doLogin(){
 						}
 						else
 						{ 
+							localStorage.setItem("lastMessage",0);
 							localStorage.setItem('userId',responseText.mobile_no);
 							window.location.href= 'home.html';
 						} 		
@@ -223,16 +226,24 @@ function signOut(){
 }
 
 function loadHistory(toUserId){   
-	startPageLoad(); 
+	startPageLoad();  
+	lastMessage = localStorage.getItem('lastMessage');   
 	userId = localStorage.getItem('userId');  
 	$.ajax({
 		type:'POST',
 		url	:getBaseURL()+"?rquest=loadHistory",
 		data:{
 				'fromUser':localStorage.getItem('userId'),
-				'toUser':toUserId
+				'toUser':toUserId,
+				'lastMessage':lastMessage
 			},
-		success:function(response){  
+		success:function(response){ 
+				var MsgDate =  $($.parseHTML(response)).find("#lastMsgDate");  
+				var loadOrNot =  $($.parseHTML(response)).find("#load");  
+				load = $(loadOrNot).val();
+				localStorage.setItem("lastMessage",$(MsgDate).val());
+				//alert(load);alert(lastMessage);alert(localStorage.getItem("lastMessage"));
+				if(load != 0 || lastMessage == 0){ 
 				 	$("#chat1").html(response);
 					if ($('#atc').length > 0) {
 					      $("#chat-message-box").css("display","none");
@@ -240,7 +251,7 @@ function loadHistory(toUserId){
 						 $("#chat-message-box").css("display","block"); 
 						$("div.chat-history").scrollTop(999999); 
 					}
-				
+				}
 				 /*$("#foc").focus(); */ 
 			}
 	});
@@ -300,12 +311,13 @@ function acceptContactRequest(from,to){
 function sendTextMessage(from,to,type){
 	var fromUser = ""+from;
 	var toUser = ""+to;
-	msgType = "";
+	lastMessage = localStorage.getItem('lastMessage');   
 	if(type == 0){
 		msgType = "single";
 	}else if(type == 1){
 		msgType = "group";
 	}
+	var msgDate
 	var message = $("#message-to-send").val(); 
 	startPageLoad(); 
 	if((fromUser.length > 0) && (toUser.length > 0)){ 
@@ -316,9 +328,12 @@ function sendTextMessage(from,to,type){
 					'fromUser':fromUser,
 					'toUser':toUser,
 					'message':message,
-					'type':msgType
+					'type':msgType,
+					'lastMessage':lastMessage
 				},
 			success:function(response){ 
+					var MsgDate =  $($.parseHTML(response)).find("#lastMsgDate");  
+					localStorage.setItem("lastMessage",$(MsgDate).val());
 					if(response != 0){
 						$("#chat1").html(response);  
 						$("div.chat-history").scrollTop(999999); 
@@ -487,14 +502,22 @@ function addContatsToGroup(){
 function loadGroupHistory(groupId){   
 	startPageLoad(); 
 	userId = localStorage.getItem('userId');  
+	lastMessage = localStorage.getItem('lastMessage');   
 	$.ajax({
 		type:'POST',
 		url	:getBaseURL()+"?rquest=loadGroupChatHistory",
 		data:{
 				'userId':localStorage.getItem('userId'),
-				'groupId':groupId
+				'groupId':groupId,
+				'lastMessage':lastMessage
 			},
 		success:function(response){  
+					var MsgDate =  $($.parseHTML(response)).find("#lastMsgDate");  
+				var loadOrNot =  $($.parseHTML(response)).find("#load");  
+				load = $(loadOrNot).val();
+				localStorage.setItem("lastMessage",$(MsgDate).val());
+				 
+				if(load != 0 || lastMessage == 0){ 
 				 	$("#chat1").html(response);
 					if ($('#atc').length > 0) {
 					      $("#chat-message-box").css("display","none");
@@ -502,7 +525,7 @@ function loadGroupHistory(groupId){
 						 $("#chat-message-box").css("display","block"); 
 						$("div.chat-history").scrollTop(999999); 
 					}
-				
+				}
 				 /*$("#foc").focus(); */ 
 			}
 	});
