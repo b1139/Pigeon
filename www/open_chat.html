@@ -46,10 +46,12 @@
 				var imgsrc = document.getElementById("audioId").src; 
 				img = imgsrc.split("/"); 
 				if(img[img.length-1] == "audio.png"){ 
+				alert("record");
 					recordAudio();
 					document.getElementById("audioId").src = "img/orange-stop.png";
 				}else{  
 					stopRecording();
+					alert("stop");
 					  document.getElementById("audioId").src = "img/audio.png"; 
 					}
 	}
