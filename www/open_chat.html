@@ -29,6 +29,8 @@
 	<script src="js/camera-filesystem.js"/></script>
 	<script src="js/audio-filesystem.js"/></script>
 	<script>
+	var toUser;
+	var type;
 		status = isUser();  
 		localStorage.setItem("lastMessage",0);
 		loadHistory(getParameterByName('id'));
