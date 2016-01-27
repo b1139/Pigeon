@@ -83,8 +83,6 @@
   </platform>
 <!--   <platform name="winphone"/> -->
   
-  
-  <feature name="PushPlugin">
-  <param name="android-package" value="com.plugin.gcm.PushPlugin" />
-</feature>
+ <plugin name="com.phonegap.plugins.pushplugin" source="pgb" />
+ 
 </widget>
