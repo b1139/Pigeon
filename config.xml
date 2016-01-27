@@ -81,8 +81,10 @@
     <!--<allow-intent href="itms:*"/>
     <allow-intent href="itms-apps:*"/>-->
   </platform>
-<!--   <platform name="winphone"/> -->
+  <platform name="winphone"/>
   
- <plugin name="com.phonegap.plugins.pushplugin" source="pgb" />
- 
+  
+  <feature name="PushPlugin">
+  <param name="android-package" value="com.plugin.gcm.PushPlugin" />
+</feature>
 </widget>
