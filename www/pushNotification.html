@@ -18,10 +18,9 @@ NOTE:
         <!--<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>-->
         <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
         	<script src="js/jquery-2.1.4.min.js"></script> 
-        <script type="text/javascript" src="PushNotification.js"></script>
+        <script type="text/javascript" src="push.js"></script>
         
-        <script type="text/javascript">
-            var pushNotification;
+        <script type="text/javascript"> 
             
             function onDeviceReady() {alert(1);
 				var push = PushNotification.init({
@@ -37,11 +36,11 @@ NOTE:
 			});
 
 			push.on('registration', function(data) {alert(data);
-			    // data.registrationId
+			    alert(data.registrationId);
 			});
 
 			push.on('notification', function(data) {alert(data);
-			    // data.message,
+			    alrt(data.message);
 			    // data.title,
 			    // data.count,
 			    // data.sound,
