@@ -23,8 +23,36 @@ NOTE:
         <script type="text/javascript">
             var pushNotification;
             
-            function onDeviceReady() {
-                $("#app-status-ul").append('<li>deviceready event received</li>');
+            function onDeviceReady() {alert(1);
+				var push = PushNotification.init({
+			    android: {
+			        senderID: "864987576725"
+			    },
+			    ios: {
+			        alert: "true",
+			        badge: "true",
+			        sound: "true"
+			    },
+			    windows: {}
+			});
+
+			push.on('registration', function(data) {alert(data);
+			    // data.registrationId
+			});
+
+			push.on('notification', function(data) {alert(data);
+			    // data.message,
+			    // data.title,
+			    // data.count,
+			    // data.sound,
+			    // data.image,
+			    // data.additionalData
+			});
+
+			push.on('error', function(e) {
+			    // e.message
+			});
+                /*$("#app-status-ul").append('<li>deviceready event received</li>');
                 
 				document.addEventListener("backbutton", function(e)
 				{
@@ -137,7 +165,7 @@ NOTE:
                     default:
 						$("#app-status-ul").append('<li>EVENT -> Unknown, an event was received and we do not know what it is</li>');
                     break;
-                }
+                }*/
             }
             
             function tokenHandler (result) {
