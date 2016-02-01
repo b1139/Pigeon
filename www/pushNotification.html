@@ -5,7 +5,7 @@
     </head>
     <body>
 
-/*
+<!--/*
 NOTE:
     This demo uses these plugins:
         Cordova Device Plugin: http://plugins.cordova.io/#/package/org.apache.cordova.device
@@ -14,7 +14,7 @@ NOTE:
     To add them via the CLI:
         $ cordova plugin add org.apache.cordova.device
         $ cordova plugin add org.apache.cordova.media
-*/       
+*/ -->      
         <!--<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>-->
         <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
         	<script src="js/jquery-2.1.4.min.js"></script> 
@@ -49,6 +49,7 @@ NOTE:
 		      $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
                 	if (device.platform == 'android' || device.platform == 'Android' ||
                             device.platform == 'amazon-fireos' ) {
+								alert('android');
 			pushNotification.register(successHandler, errorHandler, {"senderID":"864987576725","ecb":"onNotification"});		// required!
 					} else {
                     	pushNotification.register(tokenHandler, errorHandler, {"badge":"true","sound":"true","alert":"true","ecb":"onNotificationAPN"});	// required!
@@ -83,6 +84,7 @@ NOTE:
             
             // handle GCM notifications for Android
             function onNotification(e) {
+				alert(e);
                 $("#app-status-ul").append('<li>EVENT -> RECEIVED:' + e.event + '</li>');
                 
                 switch( e.event )
