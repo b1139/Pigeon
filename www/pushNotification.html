@@ -35,11 +35,11 @@ NOTE:
 			    windows: {}
 			});
 
-			push.on('registration', function(data) {alert(data);
+			push.on('registration', function(data) {alert("registration");alert(data);
 			    alert(data.registrationId);
 			});
 
-			push.on('notification', function(data) {alert(data);
+			push.on('notification', function(data) {alert("notification");alert(data);
 			    alrt(data.message);
 			    // data.title,
 			    // data.count,
