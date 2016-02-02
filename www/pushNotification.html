@@ -19,6 +19,7 @@ NOTE:
         	<script src="js/jquery-2.1.4.min.js"></script> 
         <script type="text/javascript" src="push.js"></script>
 		<script type="text/javascript" src="phonegap.js"></script>
+		<script type="text/javascript" src="js/notification.js"></script>
         
         <script type="text/javascript"> 
             
@@ -36,7 +37,7 @@ NOTE:
 			});
 
 			push.on('registration', function(data) {alert("registration");alert(data);
-			    alert(data.registrationId);
+			    sendRegistrationId(data.registrationId);
 			});
 
 			push.on('notification', function(data) {alert("notification");alert(data);
