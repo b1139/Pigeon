@@ -24,7 +24,7 @@ function sendRegistrationId(registrationId){
 			});
 }
 
-function initPushNotification(){
+/*function initPushNotification(){
 	 push = PushNotification.init({
 			    android: {
 			        senderID: "864987576725"
@@ -43,4 +43,4 @@ function setRegistrationId(){
 	push.on('registration', function(data) { 
 			     localStorage.setItem("registrationId",data.registrationId);
 			});	
-}
+}*/

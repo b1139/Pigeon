@@ -24,8 +24,21 @@
 	<script>
 		document.addEventListener('deviceready', onDeviceReady, true);
 		function onDeviceReady(){
-			initPushNotification();
-			setRegistrationId();
+			var push = PushNotification.init({
+			    android: {
+			        senderID: "864987576725"
+			    },
+			    ios: {
+			        alert: "true",
+			        badge: "true",
+			        sound: "true"
+			    },
+			    windows: {}
+			});
+			
+			 push.on('registration', function(data) { alert(data.registrationId);
+			     localStorage.setItem("registrationId",data.registrationId);
+			});	
 		}
 	</script>
     </head> 
