@@ -23,11 +23,10 @@
     <title>Pigeon</title> 
 	<script type="text/javascript" src="cordova.js"></script> 
 		<script src="js/web-service.js"></script> 
-		<script src="js/push.js"></script> 
+		<script src="push.js"></script> 
 		<script src="js/notification.js"></script>  
 	<script>
-		document.addEventListener('deviceready', onDeviceReady, true);
-		function onDeviceReady(){
+	function onDeviceReady(){alert('device ready');
 			var push = PushNotification.init({
 			    android: {
 			        senderID: "864987576725"
@@ -44,6 +43,8 @@
 			     localStorage.setItem("registrationId",data.registrationId);
 			});	
 		}
+		document.addEventListener('deviceready', onDeviceReady, true);
+		
 	</script>
     </head> 
     <body> 
