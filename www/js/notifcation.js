@@ -16,7 +16,7 @@ function sendRegistrationId(registrationId){
 				type:'POST', 
 				url:getBaseURL()+"?rquest=retrieveRegistrationId",  
 				data:{'registrationId':registrationId},
-				success:function(responseText){  
+				success:function(responseText){  alert(responseText);
 				},			
 			});
 }
