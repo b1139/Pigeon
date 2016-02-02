@@ -40,7 +40,8 @@ function showMessage(message)
 }
 
 function doSignUp()
-{	
+{	 
+	
 	if(($.trim($('#name').val()) == '' ||  $.trim($('#name').val()) == '')){ 
 		showMessage('Please Enter Your Name');
 		$('#name').select();
@@ -85,14 +86,13 @@ function doSignUp()
 	}
 	else 
 	{ alert(localStorage.getItem("registrationId"));
+		document.getElementById("registrationId").value = localStorage.getItem("registrationId");
 		startPageLoad();
 		$.ajax({
 			type:'POST',
 			//url:"/spillmobile/process/api.php?rquest=login",
 			url:getBaseURL()+"?rquest=signuppigeon",
-			data: {$("#signupform").serialize(),
-					"registrationId":localStorage.getItem("registrationId");
-					},
+			data: $("#signupform").serialize(),
 			//dataType: 'json',
 			success:function(responseText){ 
 					endPageLoad(); 
