@@ -15,14 +15,14 @@ NOTE:
         $ cordova plugin add org.apache.cordova.device
         $ cordova plugin add org.apache.cordova.media
 */ -->      
-        <!--<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>-->
-        <script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+        <!--<script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>--> 
         	<script src="js/jquery-2.1.4.min.js"></script> 
         <script type="text/javascript" src="push.js"></script>
+		<script type="text/javascript" src="phonegap.js"></script>
         
         <script type="text/javascript"> 
             
-            function onDeviceReady() {alert(1);
+            function onDeviceReady() {alert('device ready');
 				var push = PushNotification.init({
 			    android: {
 			        senderID: "864987576725"
