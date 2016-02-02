@@ -2,7 +2,7 @@
 	Files used to send and retrieve the notification for Pigeon
 */
 
-var push; //Push notification Object
+//var push; //Push notification Object
 
 function getBaseURL() {
     var url = location.href;  // entire url including querystring - also: window.location.href; 
