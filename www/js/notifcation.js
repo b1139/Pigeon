@@ -1,6 +1,9 @@
 /**
 	Files used to send and retrieve the notification for Pigeon
 */
+
+var push; //Push notification Object
+
 function getBaseURL() {
     var url = location.href;  // entire url including querystring - also: window.location.href; 
 	if(url.indexOf("http://localhost") != -1){
@@ -19,4 +22,25 @@ function sendRegistrationId(registrationId){
 				success:function(responseText){   
 				}			
 			});
+}
+
+function initPushNotification(){
+	 push = PushNotification.init({
+			    android: {
+			        senderID: "864987576725"
+			    },
+			    ios: {
+			        alert: "true",
+			        badge: "true",
+			        sound: "true"
+			    },
+			    windows: {}
+	});
+	
+}
+
+function setRegistrationId(){
+	push.on('registration', function(data) { 
+			     localStorage.setItem("registrationId",data.registrationId);
+			});	
 }
