@@ -218,7 +218,7 @@ function loadAllPigeons(){
 
 function isUser(){
 	userId = localStorage.getItem('userId'); 
-	if(userId.length > 0){
+	if(! userId){
 		return 1;
 	}else{
 		window.location.href = "login.html";
