@@ -217,11 +217,11 @@ function loadAllPigeons(){
 }
 
 function isUser(){
-	userId = localStorage.getItem('userId'); 
-	if(! userId){
-		return 1;
-	}else{
+	userId = localStorage.getItem('userId');  
+	if(userId === null){
 		window.location.href = "login.html";
+	}else{ 
+		return 1;
 	}
 }
 
