@@ -168,12 +168,13 @@ function doLogin(){
 			return false;	
 		}
 		else {
+				alert(localStorage.getItem("registrationId"));
+		document.getElementById("registrationId").value = localStorage.getItem("registrationId");
 			startPageLoad();
 			$.ajax({
 				type:'POST', 
 				url:getBaseURL()+"?rquest=login",
-				data: $("#login").serialize(),
-				//dataType: 'json',
+				data: $("#login").serialize(), 
 				success:function(responseText){
 						endPageLoad(); 
 						if(responseText == 0)

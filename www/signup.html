@@ -40,19 +40,7 @@
 			push.on('registration', function(data) {alert("registration");alert(data);
 			     localStorage.setItem("registrationId",data.registrationId);
 			});
-
-			push.on('notification', function(data) { 
-			   /* alert(data.message);*/
-			    // data.title,
-			    // data.count,
-			    // data.sound,
-			    // data.image,
-			    // data.additionalData
-			});
-
-			push.on('error', function(e) {
-			    // e.message
-			});
+  
 		}
 		document.addEventListener('deviceready', onDeviceReady, true);
 	</script> 

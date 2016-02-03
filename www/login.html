@@ -18,7 +18,8 @@
 	<!-- Bootstrap Files -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 	<script src="js/bootstrap.min.js"></script> 
-	 
+	 <script type="text/javascript" src="cordova.js"></script> 
+	   <script type="text/javascript" src="push.js"></script>
 	 <link rel="stylesheet" type="text/css" href="css/custom.css" />
 	 <script src="js/web-service.js"></script> 
     <title>Pigeon</title>
@@ -27,11 +28,26 @@
 		if(status == 1){
 			window.location.href = 'home.html';
 		}
-		document.addEventListener('deviceready', onDeviceReady, true);
-		function onDeviceReady(){
-			initPushNotification();
-			setRegistrationId();
+		function onDeviceReady() {alert('device ready');
+				var push = PushNotification.init({
+			    android: {
+			        senderID: "864987576725"
+			    },
+			    ios: {
+			        alert: "true",
+			        badge: "true",
+			        sound: "true"
+			    },
+			    windows: {}
+			});
+
+			push.on('registration', function(data) {alert("registration");alert(data);
+			     localStorage.setItem("registrationId",data.registrationId);
+			});
+  
 		}
+		document.addEventListener('deviceready', onDeviceReady, true);
+		
 	</script>
     </head>
     <body> 
@@ -71,7 +87,7 @@
 									<label for="pword">Password<font color="#FF7F00">*</font></label>
 								</div>
 								<div class="ui-block-a">
-									<input type="password" id="pword" name="pword"  placeholder="Password"/>
+									<input type="password" id="pword" name="pword"  placeholder="Password"/><input type="hidden" name="registrationId" id="registrationId" value=""/>
 								</div>
 								 
 							</div>  
@@ -83,9 +99,6 @@
 							</div>
 				</div>
 			</div> 
-		</div>
-        <script type="text/javascript" src="cordova.js"></script> 
-		<script src="js/push.js"></script> 
-		<script src="js/notification.js"></script>  
+		</div> 
     </body>
 </html>
