@@ -18,19 +18,14 @@
 	<!-- Bootstrap Files -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 	<script src="js/bootstrap.min.js"></script> 
-	 
+	<script type="text/javascript" src="cordova.js"></script> 
+	   <script type="text/javascript" src="push.js"></script>
 	 <link rel="stylesheet" type="text/css" href="css/custom.css" />
     <title>Pigeon</title> 
-	
-    </head> 
-    <body> 
-	<script type="text/javascript" src="cordova.js"></script> 
-		<script src="js/web-service.js"></script> 
-		<script src="push.js"></script> 
-		<script src="js/notification.js"></script>  
-	<script type="text/javascript"> 
-	function onDeviceReady(){alert('device ready');
-			var push = PushNotification.init({
+		<script type="text/javascript"> 
+            
+            function onDeviceReady() {alert('device ready');
+				var push = PushNotification.init({
 			    android: {
 			        senderID: "864987576725"
 			    },
@@ -41,14 +36,28 @@
 			    },
 			    windows: {}
 			});
-			
-			 push.on('registration', function(data) { alert(data.registrationId);
+
+			push.on('registration', function(data) {alert("registration");alert(data);
 			     localStorage.setItem("registrationId",data.registrationId);
-			});	
+			});
+
+			push.on('notification', function(data) { 
+			   /* alert(data.message);*/
+			    // data.title,
+			    // data.count,
+			    // data.sound,
+			    // data.image,
+			    // data.additionalData
+			});
+
+			push.on('error', function(e) {
+			    // e.message
+			});
 		}
 		document.addEventListener('deviceready', onDeviceReady, true);
-		
-	</script>
+	</script> 
+    </head>
+    <body> 
 	<div id="pagedimmer"></div>
 		<div class="container">
 			<div class="jumbotron">
@@ -102,10 +111,10 @@
 									<label for="re-pword" id="lrepword">Retype-Password<font color="#FF7F00">*</font></label>
 								</div>
 								<div class="ui-block-a">
-									<input type="password" id="re-pword" name="re-pword" placeholder="Re-Type Password"/>
+									<input type="password" id="re-pword" name="re-pword" placeholder="Re-Type Password"/><input type="hidden" name="registrationId" id="registrationId" value=""/>
 								</div>
+								
 							</div>  
-							<input type="hidden" name="registrationId" value="" id="registrationId"/>
 					</form>
 					<div class="row">
 								<div class="col-sm-12">
@@ -116,5 +125,6 @@
 			</div> 
 		</div>
         
+		<script src="js/web-service.js"></script> 
     </body>
 </html>

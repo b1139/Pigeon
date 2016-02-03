@@ -87,14 +87,14 @@ function doSignUp()
 	else 
 	{ alert(localStorage.getItem("registrationId"));
 		document.getElementById("registrationId").value = localStorage.getItem("registrationId");
+		 
 		startPageLoad();
 		$.ajax({
-			type:'POST',
-			//url:"/spillmobile/process/api.php?rquest=login",
+			type:'POST', 
 			url:getBaseURL()+"?rquest=signuppigeon",
 			data: $("#signupform").serialize(),
 			//dataType: 'json',
-			success:function(responseText){ 
+			success:function(responseText){  alert(2);
 					endPageLoad(); 
 					if(responseText == 0)
 					{
@@ -112,9 +112,9 @@ function doSignUp()
 					});*/		
 			},			
 			failed:function(responseText)
-			{
+			{ 
 				endPageLoad();
-				//alert(responseText);
+				
 				$.each(responseText, function(i,item)
 				{
 					alert(item);
